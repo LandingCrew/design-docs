@@ -136,6 +136,24 @@ Read this to understand:
 
 ---
 
+### 8. [third-party-libraries.md](third-party-libraries.md)
+**External Dependencies Layer**
+
+Read this to understand:
+- Integration of nlohmann::json (save/load, mod configs)
+- Integration of SQLite (progression tracking, anti-grinding)
+- Integration of Lua/LuaJIT (modding, balance scripting)
+- Integration of Eigen (math-heavy formulas)
+- Integration of PCG Random (better RNG)
+- Build system configuration (.Build.cs)
+- Performance considerations for each library
+
+**Why eighth:** Practical implementation details for external dependencies that power the core systems. Understanding these integrations is essential for implementing progression, modding, and data persistence.
+
+**Dependencies:** References serialization, modding architecture, and progression systems from previous docs
+
+---
+
 ## Quick Reference: Document Dependencies
 
 ```
@@ -152,6 +170,8 @@ behavior-hooks-instrumentation.md (Debugging)
 input-configuration.md (Input)
   ↓
 error-handling-serialization.md (Reliability)
+  ↓
+third-party-libraries.md (External Dependencies)
 ```
 
 ---
@@ -227,8 +247,12 @@ Once you've completed the core documentation, explore these related subsystems:
 - **Profiling:** [behavior-hooks-instrumentation.md](behavior-hooks-instrumentation.md) § Performance Instrumentation
 - **Input Mapping:** [input-configuration.md](input-configuration.md) § Input Mapping System
 - **Save/Load:** [error-handling-serialization.md](error-handling-serialization.md) § Serialization
+- **JSON Integration:** [third-party-libraries.md](third-party-libraries.md) § nlohmann::json
+- **SQLite Integration:** [third-party-libraries.md](third-party-libraries.md) § SQLite
+- **Lua Scripting:** [third-party-libraries.md](third-party-libraries.md) § Lua/LuaJIT
+- **Library Setup:** [third-party-libraries.md](third-party-libraries.md) § Integration Checklist
 
 ---
 
-**Document Status:** v1.0
-**Last Updated:** 2026-01-30
+**Document Status:** v1.1
+**Last Updated:** 2026-01-31
