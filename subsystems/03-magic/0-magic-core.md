@@ -26,111 +26,174 @@ Magic should feel powerful and rewarding for dedicated mages while remaining acc
 
 ---
 
-## Mana Management
+## Memory Management
 
-**See [Combat Systems](../combat/combat-systems.md#magic-mp) for full details**
+**See [Casting Mechanics](3-casting-mechanics.md) for full casting details**
 
-### Quick Reference
+### Core Concept
 
-**Base MP:** 100
-**Growth:** +2 per character level
-**Bonus:** +50 MP every 5 levels (if chosen during level-up)
+Magic in this system is **memory-based**, not mana-based. You prepare spells from your grimoire into limited memory slots. Each spell occupies memory based on its complexity. You can cast prepared spells infinitely, but:
+- Each cast has a **failure chance** (reduces with mastery)
+- If your poise breaks while holding/channeling, you **lose that spell** until rest
+- Lost spells reduce your available memory capacity until recovery
 
-**Regen Rates:**
+### Memory Capacity
 
-| Condition | Regen Rate |
-|-----------|------------|
-| Out of combat | 5 MP/sec |
-| In combat | 2 MP/sec |
-| Heavy armor penalty | -40% max MP, -50% regen |
-| Light armor penalty | -20% max MP, -20% regen |
-| Robes/clothes bonus | +30% regen |
+**Formula:**
+```
+Memory Capacity = Base + (Education × 0.5) + (Intuition × 0.5) + Equipment Bonuses
+```
 
-**Restoration Options:**
-- magic potions: +100 MP instant OR +20 MP/sec for 30 sec
-- Rest/sleep: Full restore
-- Absorb spell perk: Steal enemy MP
-- Shrine blessings: +50 max MP (temporary)
+**Base Memory Capacity:**
+- Pure warrior builds: 5 memory slots
+- Hybrid builds: 10 memory slots
+- Pure mage builds: 15 memory slots
+
+**Example Progression:**
+
+| Character Type | Base | Education | Intuition | Equipment | Total Memory |
+|----------------|------|-----------|-----------|-----------|--------------|
+| **Early Spellsword** | 5 | 20 (×0.5 = 10) | 15 (×0.5 = 7.5) | 0 | ~22 memory |
+| **Mid Battle Mage** | 10 | 40 (×0.5 = 20) | 35 (×0.5 = 17.5) | +3 | ~50 memory |
+| **Late Pure Mage** | 15 | 80 (×0.5 = 40) | 75 (×0.5 = 37.5) | +8 | ~100 memory |
+
+**Memory Sources:**
+- **Stat bonuses:** Education + Intuition (0.5× each) - primary source
+- **Equipment:** Knowledge enchantments (+1-3 memory per piece)
+- **Accessories:** Rings, amulets, circlets (+1-2 memory each)
+- **Perks:** Memory expansion perks (+5-10 memory)
+
+### Spell Memory Costs
+
+**Spells cost 1-7 memory based on complexity** (not tier alone):
+
+| Complexity | Memory Cost | Examples |
+|------------|-------------|----------|
+| **Simple** | 1-2 memory | Minor utility, basic attacks (Sparks, Healing Touch) |
+| **Moderate** | 3-4 memory | Combat staples (Firebolt, Ice Spike, Lesser Ward) |
+| **Complex** | 5-6 memory | Advanced combat (Fireball, Lightning Bolt, Greater Ward) |
+| **Ultimate** | 7 memory | Master-tier devastation (Blizzard, Apocalypse, Mass Paralysis) |
+
+**Example Loadout (22 memory capacity - early spellsword):**
+```
+Fireball (5 memory) + Lesser Ward (3 memory) + Fast Healing (4 memory) + Reload (1 memory) + Sparks (2 memory) + utility spells (7 memory) = 22 total
+```
+
+### Memory Recovery
+
+**Rest/Sleep:**
+- Full memory restoration (all "forgotten" spells return)
+- Requires safe location (bed, campfire, inn)
+- Restores all lost capacity from poise breaks
+
+**Clarity Potions:**
+- Restore lost spells mid-adventure
+- **Minor Clarity:** Recover 1 forgotten spell (50g)
+- **Clarity Potion:** Recover 2 forgotten spells (150g)
+- **Greater Clarity:** Recover 3 forgotten spells (400g)
+- **Grand Clarity:** Recover all forgotten spells (1000g)
+
+**Cannot recover during combat** except via potions (expensive, limited)
 
 ---
 
 ## Armor Type Impact on Casting
 
+**Critical Concept:** Armor doesn't affect memory capacity or spell costs. Instead, it affects **poise** - your resistance to spell interruption and memory loss.
+
 ### Heavy Armor (Plate, Scale)
 
-**Penalties:**
-- **-40% Maximum MP** (100 MP → 60 MP)
-- **-50% MP Regen** (2 MP/sec → 1 MP/sec in combat)
-- **+25% Spell Cost** (100 MP spell → 125 MP)
+**Benefits:**
+- **High Poise** - Very resistant to stagger and poise breaks
+- Protects held/channeled spells from interruption
+- Can tank hits while casting without losing memory
 - **Cannot cast while blocking with shield**
 
+**Drawbacks:**
+- Slow movement (already 65% slower while casting → even slower)
+- Heavy armor movement penalties stack with casting penalties
+- Low dodge capability
+
 **Who should wear:**
-- Spellswords (minimal magic usage)
-- Tank builds with utility spells only
-- Divine Arts healers who rarely cast
+- Spellswords (minimal spell variety, high survivability)
+- Tank builds using utility spells
+- Players who can't avoid damage reliably
 
 **Example:**
-Pure mage with 300 MP in heavy armor:
-- Effective MP: 180 MP
-- Regen in combat: 0.6 MP/sec
-- Fireball (100 MP) costs 125 MP
-- Can cast only 1-2 spells before drained
+Spellsword holding Fireball (5 memory) while enemy attacks:
+- Heavy armor poise: Takes 3-4 hits before poise breaks
+- If poise holds: Fireball casts successfully
+- If poise breaks: Lose Fireball (5 memory gone until rest)
+- **High poise = insurance against memory loss**
 
 ---
 
 ### Light Armor (Leather, Chain)
 
-**Penalties:**
-- **-20% Maximum MP** (100 MP → 80 MP)
-- **-20% MP Regen** (2 MP/sec → 1.6 MP/sec in combat)
+**Benefits:**
+- **Medium Poise** - Some resistance to stagger
+- Better mobility than heavy armor
+- Balanced defense/agility
+- Reasonable protection against poise breaks
+
+**Drawbacks:**
+- Can still lose spells to heavy hits
+- Not as forgiving as heavy armor
+- Not as mobile as robes
 
 **Who should wear:**
-- Battle mages (sword + spell)
-- Combat-focused mages who need defense
+- Battle mages (balanced approach)
+- Combat-focused mages who take some hits
 - Hybrid archers with magic support
 
 **Example:**
-Battle mage with 250 MP in light armor:
-- Effective MP: 200 MP
-- Regen in combat: 1.6 MP/sec
-- Firebolt (50 MP) costs 50 MP
-- Can cast 4 spells, reasonable sustainability
+Battle mage channeling Lightning (4 memory):
+- Light armor poise: Takes 1-2 hits before poise breaks
+- Must be somewhat careful positioning
+- Moderate risk of memory loss
+- **Medium poise = play smart, not perfect**
 
 ---
 
 ### Robes / Clothing (No Armor)
 
-**Bonuses:**
-- **+0% Maximum MP** (no penalty)
-- **+30% MP Regen** (2 MP/sec → 2.6 MP/sec in combat)
-- **Access to mage armor perks**
+**Benefits:**
+- **Maximum mobility** - Fast movement, best dodging
+- **No movement penalties** (just the 65% casting slowdown)
+- **Access to mage armor perks** (magical protection)
+- Best for avoiding damage entirely
+
+**Drawbacks:**
+- **Very Low Poise** - Single heavy hit can break poise
+- Easily lose held/channeled spells
+- Must play defensively or use wards
+- High risk when holding expensive spells (6-7 memory)
 
 **Who should wear:**
-- Pure mages
+- Pure mages (expert positioning)
 - Glass cannon builds
-- Summoners (let minions tank)
-- Illusionists (never get hit)
+- Summoners (minions tank for you)
+- Illusionists (invisibility, crowd control)
 
 **Example:**
-Pure mage with 400 MP in robes:
-- Effective MP: 400 MP
-- Regen in combat: 2.6 MP/sec
-- Apocalypse (250 MP) costs 250 MP
-- Can cast 1 master spell + several smaller spells
-- Recovers 26 MP every 10 seconds
+Pure mage holding Apocalypse (7 memory):
+- Robe poise: Very low, one solid hit breaks poise
+- If hit: Lose Apocalypse (7 memory gone until rest)
+- Must use wards, summons, or perfect positioning
+- **Low poise = high skill ceiling, high reward**
 
 ---
 
 ### Armor Type Comparison Table
 
-| Armor Type | Max MP | Regen | Spell Cost | Physical Defense | Build Type |
-|------------|--------|-------|------------|------------------|------------|
-| **Heavy** | -40% | -50% | +25% | High | Spellsword (minimal magic) |
-| **Light** | -20% | -20% | +0% | Medium | Battle Mage (balanced) |
-| **Robes** | +0% | +30% | +0% | Very Low | Pure Mage (glass cannon) |
+| Armor Type | Poise | Movement | Memory Protection | Physical Defense | Build Type |
+|------------|-------|----------|-------------------|------------------|------------|
+| **Heavy** | Very High | Very Slow | Excellent (3-4 hits) | High | Spellsword (tank caster) |
+| **Light** | Medium | Moderate | Good (1-2 hits) | Medium | Battle Mage (balanced) |
+| **Robes** | Very Low | Fast | Poor (1 hit) | Very Low | Pure Mage (glass cannon) |
 
 **Design Intent:**
-Armor choice should be a meaningful tradeoff. Heavy armor makes you a tank but cripples magic. Robes maximize magical power but leave you vulnerable. Light armor is the compromise for hybrid builds.
+Armor choice creates a **poise vs mobility tradeoff**. Heavy armor protects your memory but limits movement. Robes maximize mobility but require perfect play to avoid memory loss. Light armor is the middle ground for hybrids.
 
 ---
 
@@ -146,78 +209,82 @@ Pure Warrior ←→ Spellsword ←→ Battle Mage ←→ Pure Mage
 ### Pure Mage (100% Magic Focus)
 
 **Characteristics:**
-- Robes only (maximum MP regen)
+- Robes only (maximum mobility, lowest poise)
 - 3-4 magic schools trained
-- High MP pool (400-500 MP at high level)
+- High memory capacity (80-100+ memory at high level)
+- 6-8 mastered spells (reduced memory costs)
 - Devastating spell damage
 - Fragile in melee
 
 **Strengths:**
-- Highest spell damage
-- Most spell variety
-- Best MP efficiency
-- Access to master spells
+- Largest spell variety (can prepare many spells)
+- Mastered spells have low failure rates (5-10%)
+- Can adapt to any situation via large loadout
+- Access to multiple master spells
 
 **Weaknesses:**
-- Dies quickly if caught
-- Struggles vs magic-resistant enemies
-- Limited physical damage
-- Vulnerable to archers
+- Very low poise (easily lose spells to stagger)
+- Must avoid damage or risk major memory loss
+- Losing 7-memory spell is devastating
+- Vulnerable to rushdown tactics
 
 **Playstyle:**
-Stay at range, control battlefield with summons/wards, devastate with high-tier spells.
+Stay at range, control battlefield with summons/wards, devastate with high-tier spells. Never let enemies close enough to break poise.
 
 ---
 
 ### Battle Mage (50% Magic)
 
 **Characteristics:**
-- Light armor (balance defense/magic)
+- Light armor (balance defense/magic, medium poise)
 - 1-2 magic schools + weapon skill
-- Medium MP pool (250-350 MP)
+- Medium memory capacity (45-60 memory at high level)
+- 4-6 prepared spells + Reload for flexibility
 - Sword in right hand, spell in left
 - Mobile combatant
 
 **Strengths:**
 - Versatile (melee + magic)
-- Reasonable defense
-- Good mobility
-- Can adapt to situations
+- Medium poise protects against some spell loss
+- Reload spell enables mid-combat adaptation
+- Can switch between physical and magical damage
 
 **Weaknesses:**
-- Not best at anything
-- Split skill investment
-- Less MP than pure mage
-- Less damage than pure warrior
+- Not best at anything specific
+- Split skill investment (magic + melee)
+- Smaller spell variety than pure mage
+- Less damage output than pure builds
 
 **Playstyle:**
-Dance between melee and magic, use spells to augment combat, heal when needed.
+Dance between melee and magic, use spells to augment combat, heal when needed. Use Reload to swap spells based on enemy type. Medium poise allows some aggressive spell use.
 
 ---
 
 ### Spellsword (10% Magic)
 
 **Characteristics:**
-- Heavy armor (tank)
-- 1 magic school (usually Divine Arts)
-- Low MP pool (150-200 MP)
+- Heavy armor (tank, very high poise)
+- 1 magic school (usually Divine Arts for healing)
+- Low memory capacity (20-30 memory at high level)
+- 2-4 prepared spells (utility focus)
 - Primarily melee fighter
-- Magic for utility/healing
+- Magic for utility/healing/buffs
 
 **Strengths:**
-- High survivability
+- Very high poise (almost never lose spells)
+- Can hold/channel spells safely while tanking hits
 - Strong melee damage
-- Self-healing
+- Self-sufficient (healing spells)
 - Frontline tank
 
 **Weaknesses:**
-- Very limited MP
-- Can't sustain magic combat
-- Expensive spells unusable
+- Very limited spell variety (small memory pool)
+- Can't prepare many complex spells
+- Higher spell failure rates (less magic skill investment)
 - Slow movement
 
 **Playstyle:**
-Frontline fighter who occasionally heals or buffs, magic as supplement not focus.
+Frontline fighter who occasionally heals or buffs, magic as supplement not focus. High poise means you can safely cast even under pressure.
 
 ---
 
@@ -288,34 +355,39 @@ Frontline fighter who occasionally heals or buffs, magic as supplement not focus
 
 ---
 
-## Resource Management Strategy
+## Memory Management Strategy
 
-### MP Conservation Techniques
+### Spell Preparation Tactics
 
-**1. Concentration Spells for Efficiency**
-- Flames: 20 MP/sec → more efficient than Firebolt spam
-- Healing: 15 MP/sec → better MP-to-HP ratio than instant heals
-- Use concentration for sustained damage/healing
+**1. Core Loadout + Situational Spells**
+- Prepare 3-4 "always useful" spells (damage, heal, ward)
+- Reserve 20-30% memory for situational spells
+- Use Reload spell to swap situational spells as needed
+- Example: Swap Fire spells for Frost when fighting fire enemies
 
-**2. Mix Weapon + Magic**
-- Soften with spell, finish with weapon
-- Saves MP for tough encounters
-- Battle mage strategy
+**2. Mastery Reduces Memory Cost**
+- Cast same spell 50/100/200+ times → reduce memory cost
+- Mastered Fireball (7 memory) → (6 → 5 → 4 memory)
+- Specialize in core spells to fit more in loadout
+- Pure mages should master 4-6 signature spells
 
-**3. Pre-Combat Buffing**
-- Cast armor spells before fight (60 sec duration)
-- Summon atronach before engagement
-- Reduces in-combat MP drain
+**3. Spell Complexity Budget**
+- Don't fill all slots with expensive spells (6-7 memory)
+- Mix cheap utility (1-2 memory) with expensive damage
+- Cheap spells = low risk if lost to poise break
+- Expensive spells = save for critical moments
 
-**4. Potion Timing**
-- Save potions for emergencies
-- Use out-of-combat regen when safe
-- Combine food + potions for max regen
+**4. Poise Break Risk Management**
+- Don't hold expensive spells (6-7 memory) in risky situations
+- Quick-cast expensive spells when safe
+- Hold cheap spells (1-3 memory) when in danger
+- Losing Sparks (2 memory) vs losing Apocalypse (7 memory) is huge difference
 
-**5. Tactical Retreating**
-- Disengage to regen MP
-- Out-of-combat regen is 2.5× faster
-- Kite while waiting for MP
+**5. Reload Spell Discipline**
+- Prepare Reload (1 memory) for flexibility
+- First cast guaranteed success (0% failure)
+- Second+ cast exponential failure risk + debuff to all spells
+- Use Reload sparingly (situational swaps, not constant cycling)
 
 ---
 
@@ -396,11 +468,12 @@ Use magic for advantages, fall back on weapons when MP low or situation doesn't 
 
 ## Open Questions
 
-1. **Mana potions cost vs effectiveness balance?**
-2. **Should concentration spells be interruptible by any damage or just staggers?**
-3. **Robes vs clothing distinction?** (Mage robes vs peasant clothes)
-4. **MP regen during dialogue/paused states?**
-5. **Should heavy armor penalty scale with armor rating or be binary?**
+1. **Spell complexity → memory cost mapping:** Should all Tier 5 spells cost 7 memory, or vary by complexity within tier?
+2. **Ward mechanics without MP:** Should wards have upkeep failure chance, or just work until interrupted by poise break?
+3. **Clarity potion balance:** How many spells should each tier restore? Should cost scale with spell complexity recovered?
+4. **Equipment memory bonuses:** Should rings/amulets give flat +1-2 memory, or percentage-based scaling?
+5. **Meditation replacement:** With no MP regen, should meditation reduce failure rates temporarily? Or grant temporary memory bonus?
+6. **Poise threshold values:** Exact damage values required to break poise for each armor type?
 
 ---
 

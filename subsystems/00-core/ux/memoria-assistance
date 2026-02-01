@@ -1,0 +1,58 @@
+
+# Memoria 
+
+## Enemy Deteched
+
+"Seeker, hostile lifesigns detected..."
+
+### Undead
+
+#### Ghouls
+"Seeker, Humunoid target - Ghoul, requires excessive blunt force, hardy,.."
+
+
+### humanoids
+
+#### Bandits
+"Seeker, Humunoid target - Take cover and keep interval spacing."
+
+
+
+### Boss
+#### detection
+"Seeker, a particularrly strong signature has been deteched ahead..."
+
+#### Specials/Charge up
+
+
+## Combat - Generic
+### Quiver 
+Quiver at 75%
+Quiver at 50%
+Quiver at 25%
+Quiver deleted...
+
+#### Potions
+Out of health recovery potions
+out of stamina recovery potions
+
+last health recovery
+last stamina recovery 
+
+## Ally Seeker Joining Party
+"
+Allied seeker joining 
+
+
+## Low Health
+
+"Seeker, We have expended considerable resources. We suggest reprioritizing..."
+
+options:
+
+- Flee
+- Request reinforce: (send a network ping to friends -> Allied seeker joining prty)
+- Double Down
+
+
+##

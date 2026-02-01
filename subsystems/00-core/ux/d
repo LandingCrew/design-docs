@@ -1,0 +1,259 @@
+## Part 2: Interactive Memoria Menu
+
+### Activation
+- **Keybind**: Hold 'M' or dedicated button
+- **Effect**: Time slows (similar to VATS/Tac-Scan)
+- **Visual**: World desaturates, Memoria interface expands to center screen
+
+### Menu Structure
+
+#### Main Interface
+```
+╔═══════════════════════════════════════════════╗
+║           MEMORIA CONSULTATION SUITE          ║
+╠═══════════════════════════════════════════════╣
+║                                               ║
+║  [1] Tactical Analysis                        ║
+║  [2] Bestiary & Enemy Intel                   ║
+║  [3] Environmental Scan                       ║
+║  [4] Mission Guidance                         ║
+║  [5] Network & Communications                 ║
+║  [6] Memoria Settings                         ║
+║  [7] Conversation                             ║
+║                                               ║
+╚═══════════════════════════════════════════════╝
+```
+
+#### 1. Tactical Analysis
+**Purpose**: Deep dive into current combat situation
+
+**Features**:
+- 3D battlefield visualization with enemy positions
+- Suggested tactics based on loadout
+- Environmental hazards mapped
+- Optimal positioning recommendations
+- Escape route highlighting
+
+**Example Display**:
+```
+╔═ TACTICAL OVERVIEW ═══════════════════════════╗
+║ Current Situation: AMBUSH                     ║
+║ Hostiles: 5 (3 Melee, 2 Ranged)              ║
+║ Cover Positions: 3 available                  ║
+║                                               ║
+║ RECOMMENDED ACTION:                           ║
+║ "Fall back to chokepoint, use Shield Ward    ║
+║  to block arrows while engaging melee."       ║
+║                                               ║
+║ SUCCESS PROBABILITY: 67% (with cover)         ║
+╚═══════════════════════════════════════════════╝
+```
+
+#### 2. Bestiary & Enemy Intel
+**Purpose**: Detailed enemy database
+
+**Features**:
+- Scrollable list of encountered enemies
+- Detailed stats, weaknesses, resistances
+- Behavioral patterns
+- Drop tables and loot information
+- Combat tips and strategies
+- Lore entries (unlocked through observation)
+
+**Example Entry**:
+```
+╔═ GHOUL ═══════════════════════════════════════╗
+║ Classification: Undead Humanoid               ║
+║ Threat Level: ★★★☆☆                          ║
+║ Encounters: 47                                ║
+║                                               ║
+║ PHYSICAL ATTRIBUTES:                          ║
+║ Health: High | Stamina: Medium                ║
+║ Speed: Slow | Detection: Moderate             ║
+║                                               ║
+║ RESISTANCES:                                  ║
+║ ████████░░ Slash (80%)                        ║
+║ ██████░░░░ Pierce (60%)                       ║
+║ ███░░░░░░░ Blunt (30%)                        ║
+║ ██░░░░░░░░ Fire (20%)                         ║
+║                                               ║
+║ BEHAVIORAL PATTERNS:                          ║
+║ - Aggressive on sight                         ║
+║ - Groups: 2-5 individuals                     ║
+║ - Peak activity: Nighttime                    ║
+║                                               ║
+║ MEMORIA NOTES:                                ║
+║ "Hardy creatures requiring excessive force.   ║
+║  Recommend bludgeoning weapons or fire magic. ║
+║  Target head for critical damage."            ║
+╚═══════════════════════════════════════════════╝
+```
+
+#### 3. Environmental Scan
+**Purpose**: Analyze surroundings for hazards, resources, points of interest
+
+**Features**:
+- Treasure/resource detection (limited by Memoria energy)
+- Trap identification and disarm suggestions
+- Hidden passage detection
+- Material analysis (for crafting)
+- Weather and time-based warnings
+
+**Example Display**:
+```
+╔═ ENVIRONMENTAL SCAN ══════════════════════════╗
+║ Location: Ancient Ruins - North Wing          ║
+║ Energy Cost: ⚡⚡░░░ (2/5)                     ║
+║                                               ║
+║ DETECTED:                                     ║
+║ ⚠ Pressure Plate (3m ahead)                   ║
+║   └─ Disarm: Lockpick 45+                     ║
+║ ◉ Herb Cluster (Wild Sage x3)                 ║
+║ ◈ Weak Wall (destructible)                    ║
+║ ◎ Chest (locked, difficulty: medium)          ║
+║                                               ║
+║ ENVIRONMENTAL HAZARDS:                        ║
+║ - Structural instability: 45%                 ║
+║ - Toxic spores detected (low concentration)   ║
+║                                               ║
+║ RECOMMENDATION:                               ║
+║ "Proceed with caution. Recommend antidote     ║
+║  preparation before exploring deeper."        ║
+╚═══════════════════════════════════════════════╝
+```
+
+#### 4. Mission Guidance
+**Purpose**: Quest tracking and strategic advice
+
+**Features**:
+- Active quest list with priorities
+- Objective markers and waypoint management
+- Time-sensitive quest warnings
+- Consequence predictions for major decisions
+- Alternative approach suggestions
+
+**Example Display**:
+```
+╔═ ACTIVE MISSIONS ═════════════════════════════╗
+║                                               ║
+║ ⦿ PRIMARY: The Lost Archive                   ║
+║   └─ Find Scholar Moren's research notes      ║
+║   └─ Time Remaining: 2 days, 14 hours ⏱      ║
+║   └─ Memoria Advice: "Urgent. Prioritize."   ║
+║                                               ║
+║ ○ SECONDARY: Merchant's Request               ║
+║   └─ Deliver package to Tradetown             ║
+║   └─ Reward: 150 gold                         ║
+║                                               ║
+║ ◎ SEEKER GUILD: Ghoul Nest Clearing           ║
+║   └─ Eliminate 15 ghouls (7/15)               ║
+║   └─ Co-op available (ping allies)            ║
+║                                               ║
+║ CONSEQUENCE WARNING:                          ║
+║ "Failure to complete 'Lost Archive' may      ║
+║  result in faction reputation loss."          ║
+╚═══════════════════════════════════════════════╝
+```
+
+#### 5. Network & Communications
+**Purpose**: Seeker Guild coordination and multiplayer features
+
+**Features**:
+- Nearby Seekers list with status
+- Send distress signals / request backup
+- Share enemy intel and map data
+- Guild mission board
+- Voice chat integration
+- Friend list and party management
+
+**Example Display**:
+```
+╔═ SEEKER NETWORK ══════════════════════════════╗
+║ Connection: STABLE                            ║
+║ Guild Rank: Adept Seeker                      ║
+║                                               ║
+║ NEARBY SEEKERS (3):                           ║
+║ ◉ "Kael" - Level 18 - [120m, NE]             ║
+║   └─ Status: In Combat                        ║
+║   └─ [Offer Assistance]                       ║
+║                                               ║
+║ ◉ "Lyra" - Level 22 - [340m, S]              ║
+║   └─ Status: Exploring                        ║
+║                                               ║
+║ ◉ "Daren" - Level 15 - [580m, W]             ║
+║   └─ Status: Idle (Town)                      ║
+║                                               ║
+║ DISTRESS CALLS (1):                           ║
+║ ⚠ "Kael" requests backup!                     ║
+║   └─ [Join] [Decline] [Send Gear]            ║
+║                                               ║
+║ GUILD BOARD (2 new missions):                 ║
+║ • Elite Hunt: Wendigo Sighting                ║
+║ • Resource Run: Silver Ore x20                ║
+╚═══════════════════════════════════════════════╝
+```
+
+#### 6. Memoria Settings
+**Purpose**: Customize AI behavior and interface
+
+**Features**:
+- Alert frequency (High/Medium/Low/Off)
+- Voice line frequency
+- HUD position and scale
+- Personality tuning (Tactical/Friendly/Minimal)
+- Auto-scan options
+- Energy regeneration rate (tied to equipment upgrades)
+
+**Example Display**:
+```
+╔═ MEMORIA CONFIGURATION ═══════════════════════╗
+║                                               ║
+║ INTERFACE:                                    ║
+║ • HUD Position: [Top Right] ▼                 ║
+║ • HUD Scale: [━━━━●─────] 60%                ║
+║ • Opacity: [━━━━━━●───] 70%                  ║
+║                                               ║
+║ BEHAVIOR:                                     ║
+║ • Alert Level: [High] [●Medium] [Low]        ║
+║ • Voice Lines: [All] [●Combat Only] [Off]    ║
+║ • Personality: [●Tactical] [Friendly] [Minimal]
+║ • Auto-Scan: [●Enabled] [Disabled]           ║
+║                                               ║
+║ ADVANCED:                                     ║
+║ • Enemy Detection Range: 50m                  ║
+║ • Energy Regen Rate: +2/sec (upgrade: +4)    ║
+║ • Bestiary Auto-Update: ●Enabled             ║
+║                                               ║
+╚═══════════════════════════════════════════════╝
+```
+
+#### 7. Conversation
+**Purpose**: Roleplay interaction with Memoria AI
+
+**Features**:
+- Dialogue options to ask questions
+- Lore and backstory about Memoria Engines
+- Relationship building (affects AI personality over time)
+- Easter eggs and humor
+- Training mode (tutorials)
+
+**Example Interaction**:
+```
+╔═ MEMORIA DIALOGUE ════════════════════════════╗
+║                                               ║
+║ MEMORIA:                                      ║
+║ "Seeker, you have a question. I am           ║
+║  listening."                                  ║
+║                                               ║
+║ CHOOSE TOPIC:                                 ║
+║ [1] Tell me about yourself                    ║
+║ [2] What are the Memoria Engines?             ║
+║ [3] How can I improve your capabilities?      ║
+║ [4] Do you ever get bored?                    ║
+║ [5] Combat training request                   ║
+║ [6] Nevermind                                 ║
+║                                               ║
+╚═══════════════════════════════════════════════╝
+```
+
+---

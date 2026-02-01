@@ -17,46 +17,56 @@ This document covers how magic integrates into combat specifically.
 
 ## Spell Memory System
 
+**See [Magic Core Systems](../03-magic/0-magic-core.md) for full memory system details**
+
 ### Memory Capacity
 
-**Core Mechanic:** Each spell consumes memory equal to its tier
+**Core Concept:** Magic is memory-based, not mana-based. Spells are prepared into limited memory slots.
 
 ```
-Memory Capacity = Base + (Intuition × 0.5) + (Education × 0.5) + Equipment Bonuses
+Memory Capacity = Base + (Education × 0.5) + (Intuition × 0.5) + Equipment Bonuses
 
 Base Memory Capacity:
-- Pure physical builds: 5
-- Hybrid builds: 10
-- Pure mage builds: 15
+- Pure physical builds: 5 memory
+- Hybrid builds: 10 memory
+- Pure mage builds: 15 memory
 ```
 
-**Spell Memory Cost:**
-- Tier 1 (Novice): 1 memory
-- Tier 2 (Apprentice): 2 memory
-- Tier 3 (Adept): 3 memory
-- Tier 4 (Expert): 4 memory
-- Tier 5 (Master): 5 memory
+**Spell Memory Cost (by complexity, not tier):**
+- Simple spells: 1-2 memory (basic utility, minor damage)
+- Moderate spells: 3-4 memory (combat staples)
+- Complex spells: 5-6 memory (advanced combat)
+- Ultimate spells: 7 memory (master-tier devastation)
 
-**Example Loadout (10 memory capacity):**
+**Example Progression:**
 ```
-Tier 5 spell (5 memory) + Tier 3 spell (3 memory) + 2× Tier 1 (2 memory) = 10 total
+Early Spellsword (22 memory total):
+Fireball (5) + Lesser Ward (3) + Fast Healing (4) + Reload (1) + utility (9) = 22
+
+Mid Battle Mage (50 memory total):
+6-8 prepared spells, mix of damage/utility/healing
+
+Late Pure Mage (100 memory total):
+10-15 prepared spells, multiple schools, highly specialized
 ```
 
-**Forgotten Spells:**
-- Spells are loaded in priority order
-- When capacity is exceeded, lowest priority spells are "forgotten"
-- Forgotten spells cannot be cast until memory is freed
+**Memory Loss from Poise Break:**
+- **CRITICAL MECHANIC:** If poise breaks while holding/channeling spell → spell forgotten
+- Forgotten spell reduces total capacity until rest
+- Example: Holding Apocalypse (7 memory), poise breaks → lose 7 capacity until rest
+- This makes armor choice (poise) extremely important
 
 **Memory Sources:**
-- **Stat bonuses:** Intuition + Education (0.5× each)
+- **Stat bonuses:** Education + Intuition (0.5× each) - primary source
 - **Equipment:** Knowledge enchantments (+1-3 memory per piece)
-- **Accessories:** Rings, amulets (+1-2 memory)
+- **Accessories:** Rings, amulets, circlets (+1-2 memory each)
 - **Perks:** Memory expansion perks (+5-10 memory)
 
 **Spell Mastery:**
-- Cast same spell 100+ times → reduce memory cost by 1 (minimum 1)
-- Encourages specialization
-- Mastered Tier 5 spell costs 4 memory instead of 5
+- Cast same spell 50/100/200+ times → reduce memory cost AND failure rate
+- Mastered 7-memory spell → 6 → 5 → 4 memory (minimum 1)
+- Encourages specialization in signature spells
+- Pure mages should master 4-6 core spells for efficiency
 
 ---
 
@@ -171,51 +181,56 @@ Dual cast:
 
 ### Spell Failure System
 
-**Failure Chance:**
-```
-Failure Chance = max(0, (Required Skill - Your Skill) × 2)%
+**Every cast has a failure chance** determined by spell complexity, skill level, and mastery.
 
-Examples:
-- Required 50, You have 60: 0% failure (skilled enough)
-- Required 50, You have 40: 20% failure
-- Required 70, You have 20: 100% failure (impossible to cast)
+**Failure Chance Formula:**
+```
+Base Failure Rate = Spell Base Failure × Skill Multiplier × Mastery Multiplier
+
+Spell Base Failure (by memory cost):
+1-2 memory: 10% base
+3-4 memory: 20% base
+5-6 memory: 30% base
+7 memory: 40% base
+
+Skill Multiplier = max(0.5, (100 - Skill Level) / 100)
+Mastery Multiplier:
+  0-50 casts: ×1.0
+  51-100 casts: ×0.8
+  101-200 casts: ×0.6
+  201+ casts: ×0.4
+```
+
+**Examples:**
+```
+Fireball (5 memory, 30% base):
+- Skill 50, 60 casts: 30% × 0.5 × 0.8 = 12% failure
+- Skill 100, 220 casts: 30% × 0.5 × 0.4 = 6% failure
+
+Apocalypse (7 memory, 40% base):
+- Skill 75, 30 casts: 40% × 0.5 × 1.0 = 20% failure
+- Skill 100, 250 casts: 40% × 0.5 × 0.4 = 8% failure
 ```
 
 **On Failure:**
 - Spell fizzles (no effect)
-- Character staggers briefly (0.5 sec)
-- Vulnerable to attack
-- **MP Refund:** Partial MP refund based on how close you were to success
-
-**MP Refund Formula:**
-```
-MP Refund % = 33% + ((Your Skill / Required Skill) × 67%)
-
-Examples:
-Your Skill = 0, Required = 50:
-Refund = 33% + (0/50 × 67%) = 33% refund (minimum)
-
-Your Skill = 25, Required = 50:
-Refund = 33% + (25/50 × 67%) = 33% + 33.5% = 66.5% refund
-
-Your Skill = 45, Required = 50:
-Refund = 33% + (45/50 × 67%) = 33% + 60.3% = 93.3% refund (very close!)
-
-Your Skill = 50+, Required = 50:
-No failure (100% success)
-```
+- Cast animation plays (time wasted)
+- Character vulnerable during animation
+- **No memory loss** - spell remains prepared, can try again
+- Skill EXP gained (0.5× normal)
 
 **Design Rationale:**
-- Never lose all MP on failure (minimum 33% refund - perk help restore more)
-- Being close to required skill refunds most MP (encourages trying higher-tier spells)
-- Complete novices still lose most MP (33% refund only)
-- Prevents punishing progression too harshly
+- No resource wasted (unlike MP system)
+- Failure is time-based punishment (enemy gets free hits)
+- Repeated failures in combat can be deadly
+- Mastery through practice essential for reliability
+- Even expert mages have 5-10% failure on complex spells
 
-**Avoiding Failure:**
-- Level up relevant magic school skill
-- Don't attempt spells too far above your skill level
-- Use spell tomes to learn proper casting techniques
-- Practice lower-tier spells first
+**Reducing Failure:**
+- Level up magic school skill (caps at 50% reduction)
+- Practice spells to gain mastery (up to 60% reduction)
+- Take perks for memory cost reduction (indirectly helps)
+- Use simpler spells in critical moments (lower base failure)
 
 ---
 
@@ -223,74 +238,118 @@ No failure (100% success)
 
 **Mechanic:**
 - Hold cast button to maintain effect
-- Costs MP per second (not per cast)
-- Lasts until: MP depleted, button released, or interrupted
+- **No ongoing cost** - once started, channels infinitely
+- **Failure check on initial cast only**
+- Lasts until: button released, poise break, or stagger
 
 **Examples:**
-- **Flames:** Continuous fire stream (20 MP/sec)
-- **Healing Hands:** Heal over time (15 MP/sec)
-- **Wards:** Magical shield (5 MP/sec upkeep, +20 MP per hit blocked)
-- **Lightning Stream:** Continuous shock (25 MP/sec)
+- **Flames:** Continuous fire stream (8 damage/sec, 2 memory)
+- **Healing Hands:** Heal over time (10 HP/sec, 3 memory)
+- **Lesser Ward:** Magical shield (40 damage block, 3 memory)
+- **Lightning Stream:** Continuous shock (10 damage/sec, 2 memory)
 
 **Channeling Rules:**
 ```
 Movement: 65% speed while channeling
+Failure Check: Once on initial cast (not during channel)
 Interruptions:
-- Poise break (when poise reaches 0, channel interrupted)
-- Running out of MP
-- Manually releasing button
-- Stagger/knockdown
+- Poise break → spell FORGOTTEN (memory lost until rest)
+- Manually releasing button (safe, no memory loss)
+- Stagger/knockdown → spell forgotten
+- Sprinting → cancels channel (safe)
 ```
 
-**Channel Duration:**
+**Critical Risk: Poise Break During Channel**
 ```
-Max Duration = Current MP / MP per Second
+Channeling Flames (2 memory)
+Enemy power attack breaks poise
+Result:
+- Channel interrupted
+- Flames FORGOTTEN
+- Total memory capacity: -2 until rest
+- Cannot re-prepare Flames without resting
 
-Example:
-200 MP remaining, Flames costs 20 MP/sec
-Max duration = 200 / 20 = 10 seconds
+This makes channeling extremely risky for low-poise builds (robes)
+Heavy armor mages can channel safely due to high poise
 ```
 
 ---
 
 ### Magical Shields (Wards)
 
-**Special Channeling Mechanic:**
-- Wards have LOW upkeep cost (5 MP/sec)
-- High cost only when actively blocking damage (20 MP per hit)
-- Encourages tactical shield use without punishing readiness
+**Channeling Mechanic (No Ongoing Cost):**
+- Wards are concentration spells (channel infinitely once cast)
+- **No MP or memory drain while active**
+- Block damage until: manually released, poise breaks, or ward destroyed
+- Primary risk: poise break while channeling → spell forgotten
 
 **Ward Types:**
-| Ward Tier | Upkeep Cost | Block Cost per Hit | Damage Blocked | Duration (200 MP) |
-|-----------|-------------|-------------------|----------------|-------------------|
-| **Lesser Ward** (Tier 2) | 5 MP/sec | 20 MP | 30-50 damage | 40 sec (no hits) |
-| **Ward** (Tier 3) | 7 MP/sec | 25 MP | 60-100 damage | 28 sec (no hits) |
-| **Greater Ward** (Tier 4) | 10 MP/sec | 30 MP | 120-180 damage | 20 sec (no hits) |
-| **Grand Ward** (Tier 5) | 15 MP/sec | 40 MP | 200-300 damage | 13 sec (no hits) |
+
+| Ward Type | Memory Cost | Damage Blocked | Base Failure | Notes |
+|-----------|-------------|----------------|--------------|-------|
+| **Lesser Ward** | 3 memory | 40 damage/hit | 20% | Basic protection |
+| **Ward** | 4 memory | 80 damage/hit | 25% | Standard ward |
+| **Greater Ward** | 5 memory | 150 damage/hit | 30% | Advanced protection |
+| **Grand Ward** | 6 memory | 250 damage/hit | 35% | Master-tier defense |
 
 **Blocking Mechanics:**
 ```
-MP Cost per Hit = Base Block Cost × (Damage Taken / Max Block)
+Ward blocks damage until:
+1. Damage exceeds ward capacity → ward shatters, excess damage taken
+2. Poise breaks → ward forgotten (memory lost)
+3. Manually released (safe)
 
 Example:
-Greater Ward (blocks up to 180 damage, 30 MP base cost)
-vs 90 damage attack:
+Greater Ward (150 damage block, 5 memory)
+vs 80 damage attack:
+- Ward blocks 80 damage
+- Ward remains active
+- Can continue blocking future hits
 
-MP Cost = 30 × (90 / 180) = 15 MP
-(Half damage = half MP cost)
+vs 200 damage attack:
+- Ward blocks 150 damage
+- Ward shatters (excess 50 damage taken)
+- Must recast ward (if not forgotten)
 
-vs 180 damage attack:
-MP Cost = 30 MP (full cost)
-
-vs 300 damage attack:
-MP Cost = 30 MP + 120 damage breaks through ward
+vs multiple hits while poise low:
+- Poise breaks from cumulative damage
+- Ward FORGOTTEN (5 memory lost until rest)
+- All future hits hit directly
 ```
 
 **Strategic Implications:**
-- Keep ward up for minimal MP drain
-- Heavy hits drain MP quickly
-- Multiple weak hits more MP efficient to block than few strong hits
-- Can drop ward between enemy attacks to save MP
+
+**Advantages:**
+- Infinite duration (no resource drain)
+- Protects against damage and poise damage
+- Can block spells and physical attacks
+- One hand occupied, other hand free for spells/weapons
+
+**Disadvantages:**
+- Vulnerable to poise break (lose ward permanently)
+- High memory cost (3-6 memory for ward)
+- Failure chance on initial cast
+- Ward shatters if damage exceeds capacity
+- Channeling = 65% movement speed
+
+**Tactical Uses:**
+```
+Pure Mage Defense:
+- Channel ward in one hand
+- Cast spells with other hand
+- Ward protects poise (prevents spell loss)
+- If ward forgotten to poise break, at least offensive spells remain
+
+Heavy Armor Tank Mage:
+- High poise protects ward from being forgotten
+- Can facetank while ward blocks damage
+- Ward + heavy armor = nearly invincible to poise break
+
+Light Armor Battle Mage:
+- Medium poise = moderate ward safety
+- Use ward tactically (raise before big hits)
+- Drop ward between attacks to maintain mobility
+```
 
 ---
 
@@ -313,68 +372,125 @@ MP Cost = 30 MP + 120 damage breaks through ward
 
 ---
 
-## Spell Restoration & MP Recovery
+## Memory Recovery & Clarity Potions
 
-### MP Regeneration (Natural)
+### Memory Loss
 
-**Base Regeneration:**
+**When You Lose Spells:**
+- Poise breaks while holding/channeling spell
+- Spell is "forgotten"
+- Memory capacity reduced by spell's cost
+- Cannot prepare new spells to fill gap
+- Must recover through rest or potions
+
+**Example:**
 ```
-MP Regen = 5 + (Intuition × 0.3) + (Education × 0.3) MP/sec
+Pure Mage (100 memory capacity)
+Prepared spells using 90 memory
+Channeling Greater Ward (5 memory)
+Poise breaks from enemy combo
 
-In Combat: Halved (50%)
-Out of Combat: Full rate
-```
-
-**Examples:**
-```
-Pure Warrior (Int 20, Edu 10):
-MP Regen = 5 + 6 + 3 = 14 MP/sec (out of combat)
-         = 7 MP/sec (in combat)
-
-Pure Mage (Int 80, Edu 80):
-MP Regen = 5 + 24 + 24 = 53 MP/sec (out of combat)
-         = 26.5 MP/sec (in combat)
+Result:
+- Greater Ward forgotten
+- Capacity: 100 → 95 (lost 5)
+- Prepared: 85/95 (other spells intact)
+- 5-memory gap cannot be filled until recovery
 ```
 
 ---
 
-### Meditation & Rest
-
-**Meditation (Active Ability):**
-- Channel for up to 30 seconds
-- Cannot move or act
-- Restores MP at 3× natural regen rate
-- Interrupted by damage or movement
-
-```
-Meditation Rate = Natural MP Regen × 3
-
-Example:
-Mage with 53 MP/sec regen:
-Meditation = 159 MP/sec (restores 300 MP in ~2 sec!)
-```
+### Rest & Sleep (Full Recovery)
 
 **Sleeping/Resting:**
-- Full MP restoration
-- Also restores wounds (see wound system)
+- **Restores ALL forgotten spells**
+- Returns memory capacity to maximum
 - Requires safe location (bed, campfire, inn)
+- Takes time (1-8 hours in-game)
+- Also restores health, wounds, status effects
+
+**When to Rest:**
+- After dungeon (lost multiple spells to poise breaks)
+- Before boss fight (ensure full capacity)
+- Cheap/free memory recovery (just need safe spot)
+- Long-term solution
 
 ---
 
-### Consumables
+### Clarity Potions (Emergency Recovery)
 
-**MP Potions:**
-| Potion Type | MP Restored | Cost | Weight |
-|-------------|-------------|------|--------|
-| **Minor magic Potion** | 50 MP (instant) | 25g | 0.5 |
-| **magic Potion** | 100 MP (instant) | 75g | 0.5 |
-| **Greater magic Potion** | 200 MP (instant) | 200g | 0.5 |
-| **Grand magic Potion** | 400 MP (instant) | 600g | 0.5 |
+**Purpose:**
+- Recover forgotten spells mid-adventure
+- Expensive but immediate
+- Limited quantity (don't spam)
+- Insurance for critical situations
 
-**Clarity Potions (HoT):**
-- Restore MP over time (faster than regen)
-- Can stack with natural regen
-- Example: +50 MP/sec for 10 sec = 500 MP total
+**Potion Tiers:**
+
+| Potion Type | Spells Recovered | Cost | Weight |
+|-------------|------------------|------|--------|
+| **Minor Clarity** | 1 forgotten spell | 50g | 0.5 |
+| **Clarity Potion** | 2 forgotten spells | 150g | 0.5 |
+| **Greater Clarity** | 3 forgotten spells | 400g | 0.5 |
+| **Grand Clarity** | ALL forgotten spells | 1000g | 0.5 |
+
+**Recovery Priority:**
+- Potions recover spells in order lost (oldest first)
+- Or lowest memory cost first (configurable?)
+- Example: Lost Fireball (5), then Sparks (2), then Ward (3)
+  - Minor Clarity: Recovers Fireball (oldest)
+  - OR recovers Sparks (cheapest)
+
+**Strategic Use:**
+```
+Deep in dungeon, no rest available
+Lost 3 spells to poise breaks: Apocalypse (7), Fireball (5), Ward (3)
+Total memory lost: 15
+
+Options:
+1. Grand Clarity (1000g): Recover all 3 spells
+2. Greater Clarity (400g): Recover 3 spells (same effect, saves 600g)
+3. Clarity Potion (150g): Recover 2 most critical spells
+4. Continue without recovery, finish dungeon, rest at entrance
+
+Decision depends on: remaining dungeon difficulty, gold available, risk tolerance
+```
+
+---
+
+### Reload Spell (Loadout Swapping)
+
+**Alternative to Recovery:**
+- Instead of recovering lost spells, swap to different spells
+- Reload spell (1 memory) opens grimoire mid-adventure
+- First cast guaranteed, subsequent casts risky (exponential failure)
+- Tactical flexibility but doesn't restore lost memory capacity
+
+**Example:**
+```
+Lost Fireball (5 memory) to poise break
+Capacity: 50 → 45
+Use Reload spell (1 memory prepared)
+Swap Ice Spike (4 memory) for Lightning Bolt (4 memory)
+Still only 44/45 capacity used (5-memory gap remains)
+Can't fully utilize capacity until rest
+```
+
+---
+
+### Prevention Better Than Cure
+
+**Avoid Memory Loss:**
+1. **High poise armor** (heavy armor protects spells)
+2. **Quick-cast expensive spells** (minimize holding time)
+3. **Use wards** (protect poise while casting)
+4. **Positioning** (range, cover, summons tanking)
+5. **Don't channel in robes** (unless completely safe)
+
+**Managing Risk:**
+- Hold cheap spells (1-3 memory) in combat
+- Save expensive spells (6-7 memory) for safe moments
+- Losing Sparks (2 memory) vs Apocalypse (7 memory) = huge difference
+- Budget memory loss into dungeon planning
 
 ---
 
