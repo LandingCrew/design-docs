@@ -1,0 +1,129 @@
+Documentation & Design Tasks (No Unreal Required)
+1. Complete or Refine Design Documents
+Many subsystem docs are marked as "Draft"
+Expand incomplete sections (you mentioned the Memoria AI doc is a WIP)
+Add cross-references between related systems
+Fill in "Open Questions" sections
+2. Content Design
+Write quest narratives and dialogue
+Design enemy encounters and Nemesis system characters
+Create item descriptions and lore
+Develop faction storylines
+Design dungeons and locations on paper
+3. Game Balance & Math
+Tune combat formulas and damage calculations
+Balance progression curves
+Create loot tables and drop rates
+Design skill progression XP curves
+Balance economy (merchant gold, item values)
+4. Implementation Planning
+You have an implementation folder - work on:
+
+Architecture documents
+Technical specifications
+Data schemas for game systems
+API designs for modding support
+5. Writing & World Building
+Expand lore documents
+Create NPC backstories
+Write in-game books and notes
+Design religion/deity descriptions (you have 61 deities!)
+Develop regional cultures and histories
+6. System Design Refinement
+Looking at your modified file (memoria-ai-assistance.md), you could work on:
+
+UX/UI wireframes and flowcharts
+Menu system designs (already well documented)
+HUD layout mockups
+Controller mapping schemes
+Accessibility features
+7. Tools & Scripts
+Create Python/JavaScript tools to validate design consistency
+Build calculators for damage formulas
+Generate data files from design specs
+Create documentation generators
+8. Community & Presentation
+Create pitch documents
+Write dev blogs about design decisions
+Prepare design portfolios for team members
+Document design rationale and influences
+Would you like me to help with any specific task from these categories? For example, I could help:
+
+Organize and improve existing documentation
+Create balance spreadsheets
+Write scripts to validate data consistency
+Expand specific game systems
+Create implementation roadmaps
+What area interests you most right now?
+
+lets look at Game Balance & Math
+Task:Find balance and math files
+IN
+Find all files that contain game balance formulas, damage calculations, progression curves, XP calculations, and mathematical systems. Look for:
+- Combat formulas
+- Damage calculations
+- XP/leveling formulas
+- Economy balance
+- Stat calculations
+- Progression systems
+- Any spreadsheets or data files with numbers
+
+I need to understand what balance work has been done and what needs attention.
+Globpattern: "**/*.yml"
+No files found
+Grep "combat.*damage|damage.*formula|XP.*formula|level.*progression|stat.*formula" (type: md)
+21 lines of output
+Read 12-derived-stats.md
+Read economy-trading-systems.md
+Grep "cost|price|formula|multiplier|bonus|penalty|rate|efficiency|yield|crafting.*formula|alchemy.*formula" (type: md)
+21 lines of output
+Read Smithing.md
+Excellent! The exploration agent found a comprehensive overview of your game balance systems. Based on this analysis, here's what we can work on:
+
+Game Balance & Math - What We Can Do Now
+Areas Ready for Work:
+1. Create Balance Spreadsheets
+Build Excel/Google Sheets calculators for:
+
+Damage output at different skill/gear combinations
+DPS comparisons (Dual-wield vs Two-handed vs Archery)
+Warrior vs Mage survivability analysis
+Economy simulation (gold flow, merchant limits)
+Leveling curve visualization
+2. Fill Missing Formulas
+Alchemy potion strength - needs exact calculation
+Enchanting power scaling - how skill affects enchantment strength
+Crafting XP formula - how fast do crafting skills grow?
+Poison damage mechanics - DoT calculations
+3. Balance Testing Simulations
+We could build Python scripts to simulate:
+
+Combat encounters (skill 20 vs skill 80)
+Resource depletion over time
+Critical hit probability distributions
+Armor effectiveness curves
+4. Resolve Open Design Questions
+The docs have several unresolved questions like:
+
+Should resistances stack multiplicatively or additively?
+Critical hits separate from headshots?
+Skill decay for unused skills?
+Set bonuses for matching armor?
+5. Build Comparison Tables
+Create detailed comparisons for:
+
+All weapon types (DPS, stamina cost, range)
+Build archetypes (Warrior, Mage, Rogue, Hybrid)
+Material progression (Iron → Daedric value proposition)
+Spell tiers cost-to-damage ratios
+Which Would You Like to Tackle?
+I can help you with:
+
+A) Create spreadsheet calculators - Build interactive tools to test balance
+B) Write missing formulas - Complete Alchemy/Enchanting/Poison mechanics
+
+C) Build simulation scripts - Python tools to test combat scenarios
+D) Resolve design questions - Work through the open questions list
+E) Create comparison tables - Visual guides for all systems
+
+Or something specific you noticed in that analysis?

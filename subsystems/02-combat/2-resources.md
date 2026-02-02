@@ -383,14 +383,14 @@ Result: 100 HP + 50 Bonus HP = 150 total
 Regeneration Multiplier = 1 / (1 + Number of Wounds)
 ```
 
-| Wounds | Regen Multiplier | HP Regen | SP Regen | MP Regen |
-|--------|-----------------|----------|----------|----------|
-| 0 | 100% (1.0×) | 0.5 HP/sec | 10 SP/sec | 5 MP/sec |
-| 1 | 50% (0.5×) | 0.25 HP/sec | 5 SP/sec | 2.5 MP/sec |
-| 2 | 33% (0.33×) | 0.165 HP/sec | 3.3 SP/sec | 1.65 MP/sec |
-| 3 | 25% (0.25×) | 0.125 HP/sec | 2.5 SP/sec | 1.25 MP/sec |
-| 4 | 20% (0.2×) | 0.1 HP/sec | 2 SP/sec | 1 MP/sec |
-| 5 | 16.7% (0.167×) | 0.083 HP/sec | 1.67 SP/sec | 0.83 MP/sec |
+| Wounds | Regen Multiplier | HP Regen | SP Regen |
+|--------|-----------------|----------|----------|
+| 0 | 100% (1.0×) | 0.5 HP/sec | 10 SP/sec |
+| 1 | 50% (0.5×) | 0.25 HP/sec | 5 SP/sec |
+| 2 | 33% (0.33×) | 0.165 HP/sec | 3.3 SP/sec |
+| 3 | 25% (0.25×) | 0.125 HP/sec | 2.5 SP/sec |
+| 4 | 20% (0.2×) | 0.1 HP/sec | 2 SP/sec |
+| 5 | 16.7% (0.167×) | 0.083 HP/sec | 1.67 SP/sec |
 
 **Additional Penalties (Optional - Design Discussion):**
 - Movement speed reduction? (-5% per wound?)
@@ -518,52 +518,58 @@ Regeneration Multiplier = 1 / (1 + Number of Wounds)
 
 ---
 
-## Magic (MP)
+## Magic (Memory System)
 
-**Base Value:** 100
-**Growth:** Derived from multiple stats (aggregate)
-- **Formula:** Base MP = 100 + (Intuition × 4) + (Education × 4) + (Luck × 1)
-- **Primary (Split):** Intuition (natural magical capacity) + Education (learned magical knowledge)
-- **Minor:** Luck (general magical affinity)
-- **Regen Rate:** Scales with Education stat (learned magical efficiency - see stats.md)
-**Bonus:** +50 every 5 levels (if chosen via Destiny Perks)
+**Philosophy:** Magic uses a **memory-based preparation system**, not mana/MP. You prepare spells into limited memory slots and cast them with a failure chance based on skill.
 
-> Split equally between natural talent (Intuition) and learned knowledge (Education)
-> Allows for both "natural prodigies" and "studious mages" to excel
-> Hybrid builds that dabble in magic get some benefit from either stat
+**See:** [Magic Core Systems](../03-magic/0-magic-core.md) for complete magic mechanics
 
-**Purpose:** Spell casting ONLY
-- Pure warriors can ignore this stat
-- Hybrid builds must balance with HP/SP
-- Pure mages invest heavily
+### Memory Capacity
 
-> Magika as spells that can augment or replace some stamina functions -  need to be able to make up for mages not putting skill points in stamina skills
+**Formula:** `Memory Capacity = Base + (Education × 0.5) + (Intuition × 0.5) + Equipment Bonuses`
 
-### Spell Costs by Tier
+**Base Memory Capacity:**
+- Pure warrior builds: 5 memory slots
+- Hybrid builds: 10 memory slots
+- Pure mage builds: 15 memory slots
 
-| Tier | MP Cost | Cast Time | Examples |
-|------|---------|-----------|----------|
-| Novice | 20 MP | 0.5 sec | Flames, Healing, Candlelight |
-| Apprentice | 50 MP | 0.8 sec | Firebolt, Fast Healing, Oakflesh |
-| Adept | 100 MP | 1.2 sec | Fireball, Chain Lightning |
-| Expert | 150 MP | 1.5 sec | Incinerate, Wall of Storms |
-| Master | 250 MP | 3.0 sec | Apocalypse, Mayhem |
+**Example Progression:**
 
-**Concentration Spells:** MP/sec instead of flat cost
-- Flames: 20 MP/sec
-- Healing Hands: 15 MP/sec
-- Wards: 10-30 MP/sec (based on strength)
+| Character Type | Base | Education | Intuition | Equipment | Total Memory |
+|----------------|------|-----------|-----------|-----------|--------------|
+| Early Spellsword | 5 | 20 (×0.5 = 10) | 15 (×0.5 = 7.5) | 0 | ~22 memory |
+| Mid Battle Mage | 10 | 40 (×0.5 = 20) | 35 (×0.5 = 17.5) | +3 | ~50 memory |
+| Late Pure Mage | 15 | 80 (×0.5 = 40) | 75 (×0.5 = 37.5) | +8 | ~100 memory |
 
-### magic Regeneration
+### Spell Memory Costs
 
-| Condition | Regen Rate |
-|-----------|------------|
-| Out of combat | 5 MP/sec |
-| In combat | 2 MP/sec |
-| Heavy armor | -40% max MP, -50% regen |
-| Light armor | -20% max MP, -20% regen |
-| Robes/clothes | +30% regen |
-| Potions | +100 MP instant or +20 MP/sec |
+Spells cost 1-7 memory based on complexity (not tier alone):
+
+| Complexity | Memory Cost | Examples |
+|------------|-------------|----------|
+| Simple | 1-2 memory | Minor utility, basic attacks (Sparks, Healing Touch) |
+| Moderate | 3-4 memory | Combat staples (Firebolt, Ice Spike, Lesser Ward) |
+| Complex | 5-6 memory | Advanced combat (Fireball, Lightning Bolt, Greater Ward) |
+| Ultimate | 7 memory | Master-tier devastation (Blizzard, Apocalypse, Mass Paralysis) |
+
+### Casting Mechanics
+
+- **Prepared spells can be cast infinitely** (no per-cast cost)
+- **Failure chance** reduces with skill mastery
+- **Poise breaks** cause you to "forget" the spell until rest
+- **Memory recovery** requires rest/sleep or expensive Clarity potions
+
+### Memory Recovery
+
+**Rest/Sleep:**
+- Full memory restoration (all "forgotten" spells return)
+- Requires safe location (bed, campfire, inn)
+
+**Clarity Potions:**
+- Minor Clarity: Recover 1 forgotten spell (50g)
+- Clarity Potion: Recover 2 forgotten spells (150g)
+- Greater Clarity: Recover 3 forgotten spells (400g)
+- Grand Clarity: Recover all forgotten spells (1000g)
 
 ---
 

@@ -35,7 +35,7 @@ The Memoria represents ancient technology that has bonded with the Seeker, learn
 ---
 
 ## Hud
-
+```
 ┌─────────────────────────────────────────────────────┐
 │                                   (in game messages)│
 │                                                     │
@@ -48,7 +48,7 @@ The Memoria represents ancient technology that has bonded with the Seeker, learn
 │                                                     │
 │ Status Bar             compass.                     │
 └─────────────────────────────────────────────────────┘
-
+```
 ### in game messages
 A scrolling list of debug (if enabled) or in game notifications
 
@@ -73,14 +73,36 @@ a small widget giving symbols for the
 [time] [resistence bar]    .Spells lost
 
 ### Compass
+
+### Crosshair
+This changes depending on what is equiped or being looked at. at rest looks like a ¤ Crosshair to center the screen. fades away if nothing is looked at 
+
+Contextual Crosshair:
+- Melee: Turns into a Line [\,|, —, /]  Crosshair that to show which way a melee is going to swing in a combo
+- Ranged Turns into a † Crosshair that shows arrow drop 
+- Spells: Turns into a § Crosshair to show spells are equped
+
+
+
 ## Menus
 
 ### Contextual Menus
 You use these to access  a menu or nagivate quickly to submenus if needed.  
 
+#### Quickloot
+When walking up to a lootable thing, a menu opens up displaying whats in side. press X to loot and up/down keys / mouse wheel to navigate the menu
+
+>  Note: if the thing is locked, this menu doesnt show up
+
+#### Quick Trade
+When walking up to a merchant or trainer, the interect skips to Trade menu if you hold it
+
+> Note: Only unlocks after the first time you trade with a NPC
+
 #### 4 slot "quick menus"
 
-Press Tab or [key] to open
+> Press Tab or [key] to open
+```
 　　　　　　　　　　    　　　              [character-sheet]
 　　　　　　　　　　　　　　    　　　　　　　　　　　  │
             　　　　　　　　　　      [Skills] ─── ● ─── [Destiny]
@@ -94,7 +116,7 @@ Press Tab or [key] to open
 　　　　　　　　　　      　　　　　　　[Quests] ─── ● ─── [map]
 　　　　　　　　　　            　　　　　          │
  　　　　　　　　　　               　　　　　　  [beastary]
-
+```
 The idea is that this is supposed to allow a quick access to sub menus
 quick gear/food/potion - populate a contextualy relevent recommendation based on game state. 
 
@@ -119,30 +141,36 @@ Use mode:
 ##### Examples
 
 ###### 1 menu
+```
 [thing 1]
-
+```
 ###### 2 menu
+```
 [thing 1] ─[CENTER]─[thing 3]
-
+```
 ###### 3 menu
+```
       [thing 2]
           │
        [CENTER]
           │
 [thing 4] ──[thing 3]
 
+```
 
 ###### 8 menu
+```
 [thing 1]───[thing 2]───[thing 3]
       │       │       │
 [thing 4] ─[CENTER]─[thing 5]
       │       │       │
 [thing 6]───[thing 7]───[thing 8]
 
+```
 
 #### Field Crafting Menu
-Press N or [key] to open
-
+Press N or [key] to open the Field Crafting. (field crafting is less effective/capable than a )
+```
 　　　    　　　                   [Camp]
 　　 　　　　    　　　　　　　　　　　  │
                    [Light-fire] ─── ● ─── [Cook|quick-eat]
@@ -157,11 +185,20 @@ Press N or [key] to open
 　　　　　　　　　　            　　　　│
  　　　　　　　　　　             [Enchant]
 
+```
 
+##### Lacking field crafting tools
+```
+　　  　      [Requires-Backpack]
+　 　　　　  　 　　　　│
+[Requires-Lab]───[CENTER]───[Requires-Forge]
+　　　　　　  　　　  　│
+　　　　　   　[Requires-Enchanter]
+```
+
+> Note: that these menus are not a guarenteed unlock as carrying each requires. Field equipement produces poor quality crafted then a dedicated encampment!
 
 #### Menu
-
-
 
 ### Hard menus
 These are menus that effectively pause the game 99% slow
@@ -177,11 +214,50 @@ These are menus that effectively pause the game 99% slow
 
 #### Inventory
 
-| Weapons          | Armor | Potions | field gear | END | INT | scrolls | Key Items | Misc. (junk) |
-| --------------- | --- | --- | --- | --- | --- | --- | --- | --- |
-|     |     |   |     | O   |     |     |     |     |
+| All | Weapons | Armor | Potions  | Food | scrolls | Books | Key Items | Misc. (junk) |
+| --- | --- | --- | --- | --- | --- | --- | --- | --- |
+|     |     |   |     |    |     |     |     |     |
 
- > Note quick acess from 4 slot "quick menus" drops you off to the page you want
+##### All
+
+| Name | Type | Value | Weight  |
+| --- | --- | --- | --- | 
+|     |     |     |     | 
+
+##### Weapons
+
+| Name | Type | Equip | Damange  | Enchanted | Value | Weight | 
+| --- | --- | --- | --- | --- | --- | --- |
+| Bow of hunting | shortbow | 2H | 17 | x | 195 | 8 | 
+| Cheap Bastard Sword | sword | 1.5H | 4 | x | 77 | 11 | 
+
+##### Armor/Clothes
+
+| Name | Type | Warmth | Enchanted  | Value | Weight | 
+| --- | --- | --- | --- | --- | --- | 
+Boots of Jumping | feet | 14 |  X | 1403 | 0.4.  |
+Boots of Jumping | feet | 14 |  X | 1403 | 0.4.  |
+
+##### Potions
+
+##### Food
+
+##### Scrolls
+
+##### Books
+
+##### Key Items
+
+##### Misc. (Junk)
+
+###### Contextual Notes
+Mousing or hovering a point over an item reveals extra information
+
+example
+
+Boots of Jumping | feet | 1403 | 0.4
+
+> Natural Fit: a comfortable foot molded to your foot +10 SP, +1% movespeed
 
 #### Grimorie
 
@@ -238,6 +314,8 @@ These are menus that effectively pause the game 99% slow
 - Can be depleted, limiting functionality
 
 #### 2. Tactical Alerts (Non-Intrusive)
+this should use the the notification widget above
+
 ```
 ▼ ALERT
   └─ "2 hostiles detected, north passage"
@@ -248,6 +326,7 @@ These are menus that effectively pause the game 99% slow
 - Can be expanded with quick-key (default: Tab)
 
 #### 3. Enemy Analysis Widget (Combat)
+Only when activated, not on by default (powers thing)
 ```
 ┌─ TARGET: GHOUL ────────┐
 │ Threat Level: Medium   │
@@ -261,6 +340,9 @@ These are menus that effectively pause the game 99% slow
 - Learns more about enemy types over time
 
 #### 4. Resource Warnings
+
+> Never interrupt the player flow, just make the line
+
 When resources (Health/Stamina/Magicka) drop below 30%:
 ```
 ⚠ CRITICAL: Health at 28%
@@ -272,6 +354,7 @@ When resources (Health/Stamina/Magicka) drop below 30%:
 - Choice affects AI's future suggestions
 
 #### 5. Seeker Network Indicator
+> yes, but only when net-play is enabled.
 ```
 ◉◉○○ 2 Seekers nearby
 └─ "Kael" (120m, NE)

@@ -1,0 +1,205 @@
+=== BUILD COMPARISON TOOL ===,,,,,,,,,
+Version: 1.0,,,,,,,,,
+,,,,,,,,,
+,,,BUILD 1,BUILD 2,BUILD 3,,,
+BUILD NAME,,,Pure Warrior,Battlemage,Stealth Archer,,,
+ARCHETYPE,,,Melee Tank,Hybrid,Range DPS,,,
+,,,,,,,,,
+PRIMARY STATS,,,,,,,,,
+Stat,Weight,Build 1,Build 2,Build 3,Notes,,
+Strength,Physical,100,60,40,"Melee damage, carry weight",,
+Agility,Physical,60,70,100,"Speed, dodge, crit",,
+Dexterity,Physical,50,40,80,"Precision, crafting, crit",,
+Endurance,Physical,100,50,60,"HP, stamina, wounds",,
+Intelligence,Mental,20,90,30,"Magic power, learning",,
+Education,Mental,20,80,40,"Magic power, crafting",,
+Social Standing,Mental,30,30,40,"Trading, interaction",,
+Luck,Special,20,30,50,"Crits, loot, RNG",,
+TOTAL POINTS,,,400,450,440,,,
+,,,,,,,,,
+DERIVED STATS COMPARISON,,,,,,,,,
+Derived Stat,Formula,Build 1,Build 2,Build 3,Winner,
+Physical Power,"Str×2+Agi×0.5+Dex×0.5+End×0.5",285,220,195,Build 1 (+42%)
+Magical Power,"Int×2+Edu×2",80,340,140,Build 2 (+325%)
+Action Speed,"Agi×3+Dex×1+End×1+Soc×0.5",345,315,485,Build 3 (+41%)
+Combat Fluidity,"Agi×2+End×2+Int×1",340,330,380,Build 3 (+15%)
+Interaction Speed,"Dex×3+Edu×1",170,200,280,Build 3 (+65%)
+Carry Capacity,"100+Str×5+End×2",800,600,500,Build 1 (+60%)
+Health Points,"100+Str×5+Agi×2+Dex×2+End×2",920,800,780,Build 1 (+18%)
+Stamina Points,"100+End×5+Soc×3",690,490,550,Build 1 (+41%)
+Magic Points,"100+Int×4+Edu×4",260,780,380,Build 2 (+200%)
+,,,,,,,,,
+COMBAT EFFECTIVENESS,,,,,,,,,
+Metric,Build 1,Build 2,Build 3,Notes,,
+Base Melee Damage,30,20,15,"Iron sword base",,
+× Skill Multiplier (50),0.85,0.75,0.66,"Skill-based scaling",,
+× Physical Power Mult,1.57,1.44,1.39,"From Physical Power",,
+× Material Bonus,1.6,1.3,1.1,"Ebony, Elven, Steel",,
+× Hit Location,1.25,1.25,1.25,"Torso hits",,
+= Pre-Defense Damage,50.49,28.28,16.72,,,
+,,,,,,,,,
+vs 100 Armor (50% reduction):,,,,,,,
+Final Melee Damage,25.2,14.1,8.4,"Warrior dominates melee",,
+,,,,,,,,,
+Ranged Damage (Bow):,,,,,,,
+Base Bow Damage,20,20,20,"Same bow",,
+× Skill Multiplier,0.66,0.59,0.96,"Build 3 invested in Archery",,
+× Physical Power,1.57,1.44,1.39,,,
+× Material,1.3,1.3,1.6,"Elven, Elven, Daedric",,
+× Headshot,2.0,2.0,2.0,"Sniping",,
+= Pre-Defense Damage,27.04,21.94,48.23,,,
+Final Ranged (vs 100 Armor),13.5,11.0,24.1,"Build 3 dominates range",,
+,,,,,,,,,
+Magic Damage (Fireball):,,,,,,,
+Base Spell Damage,60,60,60,"Adept-tier spell",,
+× Skill Multiplier,0.53,0.96,0.66,"Mage invested in Destruction",,
+× Magical Power,1.16,1.68,1.28,,,
+= Pre-Resistance,36.9,96.8,50.7,,,
+Final (vs 30% resist),25.8,67.7,35.5,"Build 2 dominates magic",,
+,,,,,,,,,
+SURVIVABILITY ANALYSIS,,,,,,,,,
+Metric,Build 1,Build 2,Build 3,Winner,
+Health Pool,920,800,780,Build 1 (+18%)
+Stamina Pool,690,490,550,Build 1 (+41%)
+Magic Pool,260,780,380,Build 2 (+200%)
+Armor Rating (equipped),400,150,200,"Heavy, Light, Medium"
+Damage Reduction %,80%,60%,67%,Build 1
+Effective HP,4600,2000,2364,"HP/(1-DR%)"
+Max Wounds (Endurance),100,50,60,Build 1
+Regen Mult (0 wounds),100%,100%,100%,"All equal when healthy"
+Dodge Cost (30 SP),23/23,16/16,18/18,"Dodge count available"
+,,,,,,,,,
+RESOURCE EFFICIENCY,,,,,,,,,
+Metric,Build 1,Build 2,Build 3,Analysis,
+Attacks Before Empty,69,49,55,"Stamina/10 SP per attack"
+Power Attacks Available,27,19,22,"Stamina/25 SP per power"
+Memory Capacity,17,62,27,"Spell preparation slots"
+Out-of-Combat HP Regen,0.5/sec,0.5/sec,0.5/sec,"Base regen rate"
+In-Combat Stamina Regen,10/sec,10/sec,10/sec,"Base regen rate"
+Time to Full Stamina,69 sec,49 sec,55 sec,"From empty"
+,,,,,,,,,
+UTILITY & VERSATILITY,,,,,,,,,
+Category,Build 1,Build 2,Build 3,Notes,
+Carry Weight,800,600,500,"Affects loot capacity"
+Lockpicking Speed,Fast,Medium,Very Fast,"Interaction Speed"
+Crafting Quality,Good,Good,Excellent,"Dex + Edu based"
+Merchant Prices,Fair,Fair,Better,"Social Standing"
+Quest Solutions,Physical,Magical,Stealth,"Approach variety"
+Solo Viability,Excellent,Good,Good,,,
+Group Support,Tank,DPS/Support,DPS,,,
+,,,,,,,,,
+PLAYSTYLE SUMMARY,,,,,,,,,
+,,,,,,,,,
+BUILD 1: PURE WARRIOR,,,,,,,,,
+Strengths:,,,"- Highest melee damage (25.2)",,,,
+,,,"- Best survivability (4600 EHP)",,,,
+,,,"- Most stamina for sustained combat",,,,
+,,,"- Can carry the most loot",,,,
+Weaknesses:,,,"- No ranged capability",,,,
+,,,"- Very low magic damage (25.8)",,,,
+,,,"- Slow interactions/crafting",,,,
+,,,"- Limited problem-solving options",,,,
+Best For:,,,"- Frontline tanking",,,,
+,,,"- Boss fights",,,,
+,,,"- Players who love melee",,,,
+,,,,,,,,,
+BUILD 2: BATTLEMAGE,,,,,,,,,
+Strengths:,,,"- Highest magic damage (67.7)",,,,
+,,,"- Versatile combat options",,,,
+,,,"- Good utility spells",,,,
+,,,"- Balanced stats",,,,
+Weaknesses:,,,"- Mediocre melee (14.1)",,,,
+,,,"- Lower survivability (2000 EHP)",,,,
+,,,"- Memory-dependent",,,,
+,,,"- Jack of all trades master of none",,,,
+Best For:,,,"- Versatile gameplay",,,,
+,,,"- Players who like variety",,,,
+,,,"- Caster-focused builds",,,,
+,,,,,,,,,
+BUILD 3: STEALTH ARCHER,,,,,,,,,
+Strengths:,,,"- Highest ranged damage (24.1)",,,,
+,,,"- Fastest actions/interactions",,,,
+,,,"- Best crafting capability",,,,
+,,,"- High critical hit chance",,,,
+Weaknesses:,,,"- Lowest melee damage (8.4)",,,,
+,,,"- Squishy (2364 EHP)",,,,
+,,,"- Low carry weight",,,,
+,,,"- Needs distance to be effective",,,,
+Best For:,,,"- Stealth gameplay",,,,
+,,,"- Sneak attacks",,,,
+,,,"- Kiting enemies",,,,
+,,,"- Players who avoid melee",,,,
+,,,,,,,,,
+CRITICAL HIT ANALYSIS,,,,,,,,,
+Stat,Build 1,Build 2,Build 3,Notes,
+Base Crit Chance,5%,5%,5%,"Game baseline"
++ Dexterity Bonus,+5%,+4%,+8%,"Dex×0.1%"
++ Intelligence Bonus,+1%,+4.5%,+1.5%,"Int×0.05%"
+Total Crit Chance,11%,13.5%,14.5%,"Build 3 best"
+Crit Damage Multiplier,1.5×,1.5×,1.5×,"Base"
++ Strength/Dex Bonus,+0.25,+0.18,+0.36,"(Str or Dex)×0.003"
+Total Crit Mult,1.75×,1.68×,1.86×,"Build 3 best"
+,,,,,,,,,
+Expected Damage (with crits):,,,,,,,
+Melee Expected DPS,27.0,15.1,9.1,"Includes 11-14.5% crits"
+Ranged Expected DPS,14.5,11.9,26.2,"Build 3 dominates"
+,,,,,,,,,
+DPS COMPARISON (10-second combat),,,,,,,,,
+Build,Primary Attack,DPS,Notes,,
+Build 1,Melee spam,27.0,"25.2 base, 11% crit",,
+Build 1,Power attacks,45.5,"50.2 base, 11% crit, limited by stamina",,
+Build 2,Melee spam,15.1,"Lower physical",,
+Build 2,Magic spam,67.7,"Infinite casts if prepared",,
+Build 3,Ranged spam,26.2,"24.1 base, 14.5% crit",,
+Build 3,Sneak attacks,72.6,"24.1 × 3× sneak bonus",,
+,,,,,,,,,
+WINNER BY CATEGORY,,,,,,,,,
+Category,Winner,Margin,Runner-Up,,
+Melee Damage,Build 1,+79%,Build 2,,
+Ranged Damage,Build 3,+119%,Build 1,,
+Magic Damage,Build 2,+162%,Build 3,,
+Survivability (EHP),Build 1,+130%,Build 3,,
+Resource Pool (Total),Build 1,1870,Build 2 (1570),,
+Action Speed,Build 3,+41%,Build 1,,
+Crafting,Build 3,+65%,Build 2,,
+Versatility,Build 2,Balanced,Build 3,,
+Carry Weight,Build 1,+60%,Build 2,,
+Critical Hits,Build 3,14.5%,Build 2 (13.5%),,
+,,,,,,,,,
+OVERALL RATING,,,,,,,,,
+Category,Build 1,Build 2,Build 3,Notes,
+Combat Power (1-10),9,7,8,"Raw damage output"
+Survivability (1-10),10,6,6,"EHP + sustain"
+Versatility (1-10),5,9,7,"Options available"
+Utility (1-10),6,7,9,"Crafting, interaction"
+Fun Factor (subjective),8,9,10,"Player preference"
+Difficulty (1=easy),Easy,Medium,Hard,"Skill required"
+,,,,,,,,,
+TOTAL SCORE,48/60,45/60,48/60,"Tie between 1 & 3!"
+,,,,,,,,,
+=== HYBRID BUILD IDEAS ===,,,,,,,,,
+,,,,,,,,,
+BUILD 4: SPELLSWORD,,,,,,,,,
+Stats: Str 70 Agi 60 Dex 50 End 70 Int 70 Edu 60 Soc 30 Luck 30,,,,,,,,,
+Focus: "Melee + magic fusion, buff spells, enchanted weapons",,,,,,,,,
+Pros: "Versatile, self-buffing, strong in all ranges",,,,,,,,,
+Cons: "Spread thin, needs good gear, Memory-dependent",,,,,,,,,
+,,,,,,,,,
+BUILD 5: NECROMANCER TANK,,,,,,,,,
+Stats: Str 80 Agi 40 Dex 40 End 90 Int 80 Edu 70 Soc 20 Luck 30,,,,,,,,,
+Focus: "Summon minions, tank with heavy armor, dark magic",,,,,,,,,
+Pros: "Summons tank for you, high survivability, DoT damage",,,,,,,,,
+Cons: "Slow, Memory-heavy, summon AI issues",,,,,,,,,
+,,,,,,,,,
+BUILD 6: ASSASSIN,,,,,,,,,
+Stats: Str 40 Agi 100 Dex 90 End 50 Int 40 Edu 50 Soc 60 Luck 70,,,,,,,,,
+Focus: "Sneak attacks, daggers, poisons, one-shot kills",,,,,,,,,
+Pros: "Highest burst damage, fast, excellent crits",,,,,,,,,
+Cons: "Squishy, relies on stealth, struggles if detected",,,,,,,,,
+,,,,,,,,,
+=== INSTRUCTIONS ===,,,,,,,,,
+1. Modify stat allocations in rows 10-17,,,,,,,,,
+2. Update skill multipliers based on build focus,,,,,,,,,
+3. Results auto-calculate throughout,,,,,,,,,
+4. Compare winners in summary tables,,,,,,,,,
+5. Use this to balance your personal build,,,,,,,,,

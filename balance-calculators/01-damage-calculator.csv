@@ -1,0 +1,73 @@
+=== DAMAGE CALCULATOR ===,,,,,,,,,,
+Version: 1.0,,,,,,,,,,
+Based on: 5-Stage Damage Pipeline,,,,,,,,,,
+,,,,,,,,,,
+INPUT PARAMETERS,,,,,,OUTPUT RESULTS,,,,
+Parameter,Value,Notes,,Stage,Formula,Result,Notes,
+Base Weapon Damage,30,Iron Longsword = 20-35,,Stage 1: Base Calculation,,,
+Weapon Skill,50,0-100 scale,,  Base Weapon,30,,
+Material Bonus,1.0,Iron=1.0 Steel=1.1 Elven=1.3 Ebony=1.6 Daedric=1.8,,  × Skill Multiplier,0.854,=0.5+(B4/100)^1.5
+Impact Zone Mult,1.0,Full hit=1.0 Partial=0.7 Graze=0.4,,  × Material Bonus,1.0,,
+Physical Power,200,Str×2 + Agi×0.5 + Dex×0.5 + End×0.5,,  × Impact Zone,1.0,,
+Additional Damage,0,Enchantments poison buffs,,  = Stage 1 Base,25.62,=B3*B10*B5*B6
+Hit Location,Head,Head/Torso/Arms/Legs/Feet,,,,,,
+Target Armor Rating,100,Effective armor value,,Stage 2: Power Application,,,
+Damage Type,Physical,Physical/Fire/Frost/Shock/Poison,,  Stage 1 Result,25.62,,
+Enemy Resistance,0,0-100% resistance to damage type,,  × Power Multiplier,1.4,=0.8+(B7/500)
+True Damage,0,Bypasses all defenses,,  + Additional Damage,0,,
+,,,,  = Stage 2 Total,35.87,=B14+(B15*B16)
+DERIVED CALCULATIONS,,,,,,,,,
+Skill Multiplier,0.854,=0.5+(Skill/100)^1.5,,Stage 3: Hit Location,,,
+Power Multiplier,1.40,=0.80+(PhysPower/500),,  Stage 2 Result,35.87,,
+Hit Location Mult,2.0,"Head=2.0, Torso=1.25, Arms=1.0, Legs=0.75, Feet=0.5",,  × Hit Location Mult,2.0,"Head=2.0, Torso=1.25, Limbs=1.0"
+Armor Reduction %,50.0%,=min(80% Armor/(Armor+100)),,  = Stage 3 Total,71.73,=B22*B23
+,,,,,,,,
+MATERIAL BONUS TABLE,,,,,Stage 4: Resistance,,,
+Material,Bonus,Example Weapons,,,  Stage 3 Result,71.73,,
+Iron,1.0,Iron Sword Dagger,,,  × Damage Type Resist,100%,=1-B11 (converted to %)
+Steel,1.1,Steel Sword Mace,,,  × Armor Reduction,50.0%,=1-(B9/(B9+100))
+Dwarven,1.25,Dwarven Axe Warhammer,,,  = Stage 4 Total,35.87,=B28*(1-B12)*(B9/(B9+100))
+Elven,1.3,Elven Bow Greatsword,,,,,,,
+Orcish,1.4,Orcish Battleaxe,,,Stage 5: Final Damage,,,
+Ebony,1.6,Ebony Blade,,,  Stage 4 Result,35.87,,
+Daedric,1.8,Daedric Warblade,,,  + True Damage,0,,
+Dragonbone,1.75,Dragonbone Greatsword,,,  = FINAL DAMAGE,35.87,=B35+B13
+,,,,,,,,
+HIT LOCATION TABLE,,,,,,,,,
+Location,Multiplier,Common Result,,,DAMAGE SUMMARY,,,
+Head,2.0,Massive damage,,,Input Damage,30,,
+Torso,1.25,Standard combat,,,After Skill Mult,25.62,=-14.6%
+Arms,1.0,Chip damage,,,After Power Mult,35.87,=+40.0%
+Legs,0.75,Movement slow,,,After Hit Location,71.73,=+100.0%
+Feet,0.5,Minimal damage,,,After Resistance,35.87,=-50.0%
+,,,,,FINAL OUTPUT,35.87,=+19.6% total
+ARMOR REDUCTION CURVE,,,,,,,,,
+Armor Rating,Reduction %,Effective HP Mult,,,,,,,
+0,0%,1.00×,,,EFFECTIVENESS ANALYSIS,,,
+50,33%,1.50×,,,vs 0 Armor,71.73,Maximum damage
+100,50%,2.00×,,,vs 100 Armor,35.87,Balanced target
+200,67%,3.03×,,,vs 400 Armor,14.35,Heavy armor
+300,75%,4.00×,,,Skill Impact,%,"At skill 0: 15.0 dmg, At skill 100: 45.0 dmg"
+400,80%,5.00×,,,Material Impact,%,"Iron: 35.87, Daedric: 64.56"
+500,83%,5.88×,,,,,,
+,,,,,,,,
+SKILL MULTIPLIER CURVE,,,,,QUICK REFERENCE,,,
+Skill Level,Multiplier,Damage at 30 base,,,Physical Power,Formula: Str×2 + Agi×0.5 + Dex×0.5 + End×0.5,,
+0,0.50,15.0,,,Max Physical Power,~500 (Str 200 Agi 100 Dex 100 End 100),,
+10,0.53,15.9,,,Power Multiplier Range,0.80× to 1.80×,,
+20,0.59,17.8,,,Armor Cap,80% reduction at 400+ armor,,
+30,0.66,19.9,,,Hit Location Range,0.5× (feet) to 2.0× (head),,
+40,0.75,22.6,,,Material Range,1.0× (Iron) to 1.8× (Daedric),,
+50,0.85,25.6,,,True Damage,Bypasses all defenses (Stage 5 only),,
+60,0.96,28.9,,,,,
+70,1.09,32.7,,,EXAMPLE SCENARIOS,,,
+80,1.22,36.7,,,Newbie (Skill 20 Iron),17.8 dmg,vs 0 armor body shot
+90,1.37,41.0,,,Veteran (Skill 70 Steel),35.9 dmg,vs 100 armor body shot
+100,1.50,45.0,,,Master (Skill 100 Daedric),80.8 dmg,vs 100 armor headshot
+,,,,,,,,
+=== INSTRUCTIONS ===,,,,,,,,
+"1. Fill yellow cells (B3-B13) with your test values",,,,,,,,
+2. Results auto-calculate in green cells,,,,,,,,
+3. Use tables below for reference values,,,,,,,,
+"4. Copy to Google Sheets, format as needed",,,,,,,,
+5. Formulas use cell references - adjust ranges as needed,,,,,,,,

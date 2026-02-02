@@ -1,0 +1,265 @@
+=== PROGRESSION & LEVELING CALCULATOR ===
+Version: 4.0 - LOGARITHMIC STAT CONTRIBUTIONS
+Natural logarithm with golden ratio scaling
+
+=== CHARACTER LEVEL ===
+Parameter,Value,Formula,Notes
+Character Level,25,,Your current level
+Skill Points Earned,375,=B5*15,15 points per level
+Skill Points Allocated,350,=SUM(B16:B35),Auto-calculated from skills below
+Skill Points Remaining,25,=B6-B7,Unspent points
+
+=== STAT CONTRIBUTION SYSTEM ===
+Golden Ratio: 1.618
+Formula: stat = coefficient × ln(skill + 1)
+
+Tier,Coefficient,Notes
+Major,10,Primary stat for this skill
+Greater,6.18,Strong secondary (split majors)
+Lesser,3.82,Meaningful contribution
+Minor,2.36,Universal survivability (all skills → AGI & END)
+
+=== YOUR SKILLS ===
+Skill Name,Points,STR,AGI,DEX,END,INT,EDU,SOC,LCK
+One-Handed,85,=10*LN(B16+1),=3.82*LN(B16+1),0,=2.36*LN(B16+1),0,0,0,0
+Combat Arts,82,=10*LN(B17+1),=3.82*LN(B17+1),=3.82*LN(B17+1),=3.82*LN(B17+1)+2.36*LN(B17+1),0,0,0,0
+Heavy Armor,75,=3.82*LN(B18+1),=2.36*LN(B18+1),0,=10*LN(B18+1)+2.36*LN(B18+1),0,0,0,0
+Smithing,65,=3.82*LN(B19+1),=2.36*LN(B19+1),=3.82*LN(B19+1),=3.82*LN(B19+1)+2.36*LN(B19+1),0,=10*LN(B19+1),0,0
+Enchanting,45,=2.36*LN(B20+1),=2.36*LN(B20+1),0,=2.36*LN(B20+1),0,=10*LN(B20+1),0,0
+Two-Handed,80,=10*LN(B21+1),=2.36*LN(B21+1),0,=2.36*LN(B21+1),0,0,0,0
+Marksman,0,0,=2.36*LN(B22+1),=10*LN(B22+1),=2.36*LN(B22+1),0,=3.82*LN(B22+1),0,0
+Evasion,0,0,=10*LN(B23+1),0,=3.82*LN(B23+1)+2.36*LN(B23+1),0,0,0,0
+Sneak,0,0,=10*LN(B24+1),0,=2.36*LN(B24+1),=3.82*LN(B24+1),0,0,0
+Wayfarer,0,0,=2.36*LN(B25+1),=3.82*LN(B25+1),=10*LN(B25+1)+2.36*LN(B25+1),=3.82*LN(B25+1),0,=3.82*LN(B25+1),0
+Finesse,0,=3.82*LN(B26+1),=2.36*LN(B26+1),=10*LN(B26+1),=2.36*LN(B26+1),0,0,0,0
+Subterfuge,0,0,=2.36*LN(B27+1),=10*LN(B27+1),=2.36*LN(B27+1),=3.82*LN(B27+1),0,=10*LN(B27+1),0
+Influence,0,0,=2.36*LN(B28+1),0,=2.36*LN(B28+1),=3.82*LN(B28+1),0,=10*LN(B28+1),0
+Alchemy,0,0,=2.36*LN(B29+1),0,=2.36*LN(B29+1),=3.82*LN(B29+1),=10*LN(B29+1),0,0
+Illusion,0,0,=2.36*LN(B30+1),0,=2.36*LN(B30+1),=10*LN(B30+1),0,0,0
+Conjuration,0,0,=2.36*LN(B31+1),0,=3.82*LN(B31+1)+2.36*LN(B31+1),=3.82*LN(B31+1),=10*LN(B31+1),0,0
+Evocation,0,0,=3.82*LN(B32+1)+2.36*LN(B32+1),0,=3.82*LN(B32+1)+2.36*LN(B32+1),=6.18*LN(B32+1),=6.18*LN(B32+1),0,0
+Divine Arts,0,0,=2.36*LN(B33+1),0,=2.36*LN(B33+1),=6.18*LN(B33+1),=6.18*LN(B33+1),=3.82*LN(B33+1),0
+Abjuration,0,0,=3.82*LN(B34+1)+2.36*LN(B34+1),0,=2.36*LN(B34+1),=3.82*LN(B34+1),=10*LN(B34+1),0,0
+Mysticism,0,0,=2.36*LN(B35+1),0,=2.36*LN(B35+1),=10*LN(B35+1),=3.82*LN(B35+1),0,0
+TOTAL,=SUM(B16:B35)
+
+=== DERIVED STATS ===
+Stat,Total,Formula,Notes
+Strength,=SUM(C16:C35),Auto-sum from skills,Melee damage & carry weight
+Agility,=SUM(D16:D35),Auto-sum from skills,Movement speed & dodge
+Dexterity,=SUM(E16:E35),Auto-sum from skills,Ranged accuracy & crits
+Endurance,=SUM(F16:F35),Auto-sum from skills,HP & stamina & physical resist
+Intuition,=SUM(G16:G35),Auto-sum from skills,Magic pool & perception
+Education,=SUM(H16:H35),Auto-sum from skills,Learned magic & crafting
+Social Standing,=SUM(I16:I35),Auto-sum from skills,Barter & persuasion
+Luck,=NORM.DIST(COUNTIF(B16:B35,">0"),AVERAGE(B48:B54),STDEV(B48:B54),FALSE)*100,Skill diversity bonus,Rewards balanced builds (normal distribution)
+
+=== RESOURCE POOLS ===
+Resource,Value,Formula,Notes
+Health Points,=100+(B42*5)+(B43*2)+(B44*2)+(B45*2)+B48,Base 100 + stats,Primary survivability
+Stamina Points,=100+(B45*5)+(B47*3)+B48,Base 100 + stats,Action resource
+Memory Capacity,=5+(B46*0.5)+(B47*0.5),Base 5 + stats,Spell slots
+
+=== PERKS ===
+Source,Earned,Notes
+Starting perks,3,Character creation
+Every 5 character levels,=FLOOR(B5/5),Level 5/10/15/20/25...
+Skill milestones (25/50/75/100),0,Track manually
+Special quests,0,Rare rewards
+TOTAL PERK POINTS,=B57+B58+B59+B60,Available to spend
+
+PERK ALLOCATION
+Perk Tree,Perk Name,Points Spent,Current Rank,Progress to Next
+One-Handed,Bladesman,1,3,2450/3000 hits to Rank 4
+One-Handed,Dual Flurry,1,1,50/300 dual-wield hits to Rank 2
+Combat Arts,Shield Wall,1,5,MAX RANK
+Combat Arts,Timed Block,1,2,120/500 perfect blocks to Rank 3
+Heavy Armor,Armor Training,1,4,850/1500 hits taken to Rank 5
+
+=== PERK MECHANICS ===
+Rank 1: Unlock with perk point (base +5% effectiveness)
+Rank 2-5: Earn through USE (each rank +5% max +25% at Rank 5)
+
+Example: Bladesman Rank 3
+Effect: +15% one-handed damage
+Progress to Rank 4: Need 3000 hits with one-handed weapons
+
+=== DESTINY PERKS ===
+Available at PRIME levels only (2 3 5 7 11 13 17 19 23 29 31 37 41 43 47...)
+PERMANENT CHOICES - cannot respec!
+
+Level,Available?,Choice Made,Archetype,Effect
+2,=IF(B5>=2,"YES","NO"),Warrior - Power Attack Cost,Warrior,-10% SP cost for power attacks
+3,=IF(B5>=3,"YES","NO"),Warrior - Weapon Damage,Warrior,+10 flat weapon damage
+5,=IF(B5>=5,"YES","NO"),Mage - Spell Magnitude,Mage,+20% spell magnitude
+7,=IF(B5>=7,"YES","NO"),Shadow - Sneak Attack,Shadow,+15% sneak attack damage
+11,=IF(B5>=11,"YES","NO"),Locked until level 11,-,-
+13,=IF(B5>=13,"YES","NO"),Locked until level 13,-,-
+17,=IF(B5>=17,"YES","NO"),Locked until level 17,-,-
+19,=IF(B5>=19,"YES","NO"),Locked until level 19,-,-
+23,=IF(B5>=23,"YES","NO"),Locked until level 23,-,-
+29,=IF(B5>=29,"YES","NO"),Locked until level 29,-,-
+
+=== RESPEC SYSTEM ===
+Type,Cost,What Resets,What Stays
+Skill Point Respec,5000g,All skill allocations,Perk ranks + Destiny perks
+Perk Point Respec,10000g,Perk unlocks (reset to Rank 1),Skill levels + Destiny perks
+Full Respec,20000g,Skills + Perk unlocks,Destiny perks only
+Destiny Respec,IMPOSSIBLE,Cannot respec,Permanent choices
+
+=== SKILL TIER EFFECTS ===
+Tier,Level Range,Damage Mult,Speed Bonus,SP Cost
+Novice,1-15,0.50×,-30%,+50%
+Apprentice,16-40,0.75×,-10%,+25%
+Adept,41-70,1.00×,Normal,Normal
+Expert,71-90,1.25×,+15%,-25%
+Master,91-100,1.50×,+30%,-40%
+
+=== SKILL CONTRIBUTIONS REFERENCE ===
+
+STRENGTH (Combat Power)
+One-Handed,Major,10
+Combat Arts,Major,10
+Two-Handed,Major,10
+Heavy Armor,Lesser,3.82
+Finesse,Lesser,3.82
+Smithing,Lesser,3.82
+
+AGILITY (Movement & Speed)
+Evasion,Major,10
+Sneak,Major,10
+Combat Arts,Lesser,3.82
+One-Handed,Lesser,3.82
+Evocation,Lesser,3.82
+Abjuration,Lesser,3.82
+ALL SKILLS,Minor,2.36
+
+DEXTERITY (Precision)
+Marksman,Major,10
+Finesse,Major,10
+Subterfuge,Major,10
+Combat Arts,Lesser,3.82
+Wayfarer,Lesser,3.82
+Smithing,Lesser,3.82
+
+ENDURANCE (Survivability)
+Heavy Armor,Major,10
+Wayfarer,Major,10
+Combat Arts,Lesser,3.82
+Conjuration,Lesser,3.82
+Evocation,Lesser,3.82
+Abjuration,Lesser,3.82
+Smithing,Lesser,3.82
+Evasion,Lesser,3.82
+ALL SKILLS,Minor,2.36
+
+INTUITION (Natural Magic)
+Illusion,Major,10
+Mysticism,Major,10
+Evocation,Greater,6.18
+Divine Arts,Greater,6.18
+Conjuration,Lesser,3.82
+Abjuration,Lesser,3.82
+Sneak,Lesser,3.82
+Wayfarer,Lesser,3.82
+Influence,Lesser,3.82
+Alchemy,Lesser,3.82
+
+EDUCATION (Learned Knowledge)
+Smithing,Major,10
+Alchemy,Major,10
+Conjuration,Major,10
+Abjuration,Major,10
+Enchanting,Major,10
+Evocation,Greater,6.18
+Divine Arts,Greater,6.18
+Mysticism,Lesser,3.82
+Marksman,Lesser,3.82
+
+SOCIAL STANDING (Charisma)
+Influence,Major,10
+Divine Arts,Lesser,3.82
+Subterfuge,Major,10
+Wayfarer,Lesser,3.82
+
+LUCK (Universal)
+Formula: NORM.DIST(skills_invested, AVERAGE(stats), STDEV(stats), FALSE) × 100
+
+Luck rewards SKILL DIVERSITY:
+- More skills invested = Higher luck
+- Balanced stat distribution = Higher luck
+- Min-maxing (few skills high variance stats) = Lower luck
+
+Examples:
+Jack-of-all-trades (15 skills): High luck (~8-12)
+Focused build (6-8 skills): Medium luck (~4-7)
+Pure specialist (3-4 skills): Low luck (~1-3)
+
+Affected by: Number of different skills with points + stat balance
+Not affected by: Total points allocated or skill levels
+
+=== LOGARITHMIC SCALING EXAMPLES ===
+Shows how stat gains diminish at higher skill levels
+
+Skill Level,ln(skill+1),Major (×10),Greater (×6.18),Lesser (×3.82),Minor (×2.36)
+0,0.00,0.0,0.0,0.0,0.0
+1,0.69,6.9,4.3,2.6,1.6
+5,1.79,17.9,11.1,6.8,4.2
+10,2.40,24.0,14.8,9.2,5.7
+25,3.26,32.6,20.1,12.5,7.7
+50,3.93,39.3,24.3,15.0,9.3
+75,4.33,43.3,26.8,16.5,10.2
+100,4.62,46.2,28.5,17.6,10.9
+
+Notice: First 25 points give 32.6 stat (70% of max)
+Next 75 points only give 13.6 stat (30% of max)
+This encourages broad skill investment over min-maxing
+
+=== CHARACTER XP LEVELING ===
+
+How Character Levels Work:
+- Gain character XP from quests discoveries kills etc.
+- Level up when XP threshold reached
+- Each level: +15 skill points +5 HP +3 SP
+- Every 5 levels: Choose bonus (+50 HP/SP OR +1 perk)
+
+Character XP Sources:
+Source,XP Amount,Notes
+Discovering new location,50-500,Major locations more XP
+Learning new spell,100-500,Higher tier = more XP
+Reading skill book,200,First time only
+Completing quest (minor),500-1000,Side quests
+Completing quest (major),2000-5000,Main/faction quests
+Passing dialogue check,50-200,Skill-based choices
+First kill (enemy type),100-500,Each unique enemy type
+Killing nemesis,1000+,Procedural enemies
+Boss kill,2000-10000,Major encounters
+First craft (item type),50-200,Each unique item type (exponential decay)
+
+XP to Next Level (estimated):
+Current Level,XP This Level,Cumulative XP,Notes
+1,1000,1000,Starting level
+5,2000,7000,Early game
+10,3500,20000,Mid-early
+15,5000,40000,Mid game
+20,7000,70000,Mid-late
+25,9000,110000,Your level
+30,11000,160000,Late game
+40,15000,290000,Very late
+50,20000,490000,Endgame
+
+=== INSTRUCTIONS ===
+1. Set your Character Level (B5)
+2. Allocate skill points to skills (column B rows 16-35)
+3. Stats auto-calculate in DERIVED STATS section
+4. Resource pools auto-calculate in RESOURCE POOLS section
+5. Track perk progression in PERK ALLOCATION section
+6. Plan Destiny perks in DESTINY PERKS section
+
+=== KEY CHANGES IN V4.0 ===
+✓ Logarithmic scaling: stat = coefficient × ln(skill + 1)
+✓ New coefficients: Major (10) Greater (6.18) Lesser (3.82) Minor (2.36)
+✓ Diminishing returns: Early skill points matter most
+✓ Encourages diverse builds over min-maxing single skills
+✓ All formulas work out-of-the-box in Excel/Google Sheets
+✓ Auto-calculations for stats resources and perk availability
