@@ -1,0 +1,204 @@
+=== ECONOMY & TRADING CALCULATOR ===,,,,,,
+Version: 1.0,,,,,,
+,,,,,,
+ITEM PRICING CALCULATOR,,,,,,
+,,,,,,
+BASE ITEM,,,MODIFIERS,,,
+Item Name,Iron Sword,,Speech Skill,50,0-100
+Base Price,100g,,Reputation,-10,"(-100 to +100)"
+,,,,,,
+MERCHANT SETTINGS,,,REGIONAL MODIFIERS,,,
+Merchant Type,Town Merchant,,Region Type,City,
+Merchant Gold,1500g,,"Location Modifier, +0%",Standard pricing
+Speech Modifier Sell,85%,=100% - Speech×0.3%,,,
+Speech Modifier Buy,115%,=100% + Speech×0.3%,,,
+,,,,,,
+REPUTATION EFFECTS,,,SUPPLY & DEMAND,,,
+Reputation,10,,Item Category,Weapons,
+Rep Modifier Sell,102%,=100% + Rep×0.2%,,Supply Level,Normal,
+Rep Modifier Buy,98%,=100% - Rep×0.2%,,Demand Modifier,100%,No change
+,,,,,,
+FINAL PRICES,,,CATEGORY MODIFIERS,,,
+When YOU SELL:,86.7g,=Base × Speech × Rep,,Region,Ore,Weapons,Food
+When YOU BUY:,112.7g,=Base × Speech × Rep,,Mining Town,-40%,-10%,+30%
+Merchant Profit:,26.0g,Buy - Sell margin,,Farming Village,+20%,+30%,-40%
+Profit Margin:,23%,Profit/Buy price,,Port City,+10%,-20%,-10%
+,,,,,Frontier,+50%,+100%,+20%
+DYNAMIC PRICING FORMULA,,,,,,
+Final Price = Base Price × Speech Modifier × Reputation Modifier × Supply/Demand Modifier × Location Modifier,,,,,,
+,,,,,,
+SPEECH SKILL EFFECTS,,,,,,
+Speech,Sell Price %,Buy Price %,Profit Margin,Effective Discount,
+0,100%,130%,30%,0%,
+10,97%,127%,30%,3%,
+20,94%,124%,30%,6%,
+30,91%,121%,30%,9%,
+40,88%,118%,30%,12%,
+50,85%,115%,30%,15%,
+60,82%,112%,30%,18%,
+70,79%,109%,30%,21%,
+80,76%,106%,30%,24%,
+90,73%,103%,30%,27%,
+100,70%,100%,30%,30%,
+,,,,,,
+REPUTATION EFFECTS,,,,,,
+Reputation,Sell Price %,Buy Price %,Net Benefit,
+-100,80%,120%,-40%,
+-50,90%,110%,-20%,
+0,100%,100%,0%,
++25,105%,95%,+10%,
++50,110%,90%,+20%,
++75,115%,85%,+30%,
++100,120%,80%,+40%,
+,,,,,,
+MERCHANT GOLD LIMITS,,,,,,
+Merchant Type,Gold Limit,Restock Time,Typical Location,
+Beggar,50g,12 hours,Streets,
+Village Merchant,500g,24 hours,Small towns,
+Town Merchant,1500g,48 hours,Medium towns,
+City Merchant,3000g,48 hours,Major cities,
+Master Merchant,10000g,72 hours,Capital city,
+Guild Merchant,20000g,72 hours,Faction headquarters,
+,,,,,,
+SUPPLY & DEMAND SYSTEM,,,,,,
+Units Sold to Merchant,Price Reduction,Notes,,
+0,0%,Base price,,
+5,-10%,Slight saturation,,
+10,-25%,Noticeable drop,,
+20,-50%,Heavy saturation,,
+40+,-75%,Market flooded,,
+,,,,,,
+Units Bought from Merchant,Price Increase,Notes,,
+0,0%,Full stock,,
+25% depleted,+13%,Running low,,
+50% depleted,+25%,Half stock,,
+75% depleted,+38%,Nearly empty,,
+100% depleted,+50%,Sold out,,
+,,,,,,
+REGIONAL PRICE MODIFIERS,,,,,,
+Region,Iron Ore,Weapons,Food,Magic Items,Pelts
+Mining Town,-40%,-10%,+30%,+20%,+10%
+Farming Village,+20%,+30%,-40%,+50%,+20%
+Port City,+10%,-20%,-10%,+0%,-30%
+Mountain Hold,+0%,-10%,+20%,+30%,-40%
+Frontier,+50%,+100%,+20%,+150%,-30%
+Capital City,+0%,+0%,+0%,-20%,+0%
+,,,,,,
+EXAMPLE: SELLING IRON ORE,,,,,,
+Location,Base Price,Location Mod,Final Sell Price (Speech 50),
+Mining Town,10g,-40%,5.1g,=10×0.6×0.85
+Capital City,10g,+0%,8.5g,=10×1.0×0.85
+Frontier,10g,+50%,12.8g,=10×1.5×0.85
+Profit vs Worst,,-,+150%,
+,,,,,,
+EXAMPLE: BUYING WEAPONS,,,,,,
+Location,Base Price,Location Mod,Final Buy Price (Speech 50),
+Mining Town,100g,-10%,103.5g,=100×0.9×1.15
+Port City,100g,-20%,92.0g,=100×0.8×1.15
+Frontier,100g,+100%,230.0g,=100×2.0×1.15
+Save vs Worst,,-60%,-,
+,,,,,,
+GOLD FLOW ANALYSIS,,,,,,
+,,,,,,
+INCOME SOURCES,,,AVG GOLD/HOUR,,
+Source,Early Game,Mid Game,Late Game,
+Quests,50-100g/hr,200-500g/hr,500-1000g/hr,
+Looting,20-50g/hr,100-200g/hr,300-600g/hr,
+Crafting Sales,10-30g/hr,200-400g/hr,800-1500g/hr,
+Total Income,80-180g/hr,500-1100g/hr,1600-3100g/hr,
+,,,,,,
+EXPENSES,,,AVG GOLD/HOUR,,
+Category,Early Game,Mid Game,Late Game,
+Repairs,5-10g/hr,20-40g/hr,50-100g/hr,
+Consumables,10-20g/hr,30-60g/hr,80-150g/hr,
+Training,0g/hr,50-100g/hr,200-400g/hr,
+Crafting Materials,5-15g/hr,50-100g/hr,150-300g/hr,
+Total Expenses,20-45g/hr,150-300g/hr,480-950g/hr,
+,,,,,,
+NET GOLD FLOW,,,,,
+Phase,Income,Expenses,Net/Hour,Hours to 10k Gold
+Early Game,130g/hr,33g/hr,97g/hr,103 hours
+Mid Game,800g/hr,225g/hr,575g/hr,17 hours
+Late Game,2350g/hr,715g/hr,1635g/hr,6 hours
+,,,,,,
+TRADE ROUTE SIMULATOR,,,,,,
+,,,,,,
+Route: Mining Town → Frontier,,,,,,
+Buy in Mining Town,,,Sell in Frontier,,
+Item,Price,Qty,Total Cost,Sell Price,Total Revenue
+Iron Ore,6g,50,300g,13g,650g
+Iron Ingots,12g,30,360g,24g,720g
+Weapons,90g,5,450g,200g,1000g
+,,,SUBTOTAL:,1110g,2370g
+,,,,,
+Carry Weight Used:,350 units,Max: 550,,
+Profit:,1260g,,,
+Profit Margin:,113%,,,
+Gold/Weight:,3.6g per unit,,,
+,,,,,,
+MERCHANT SATURATION CALCULATOR,,,,,,
+You're selling Iron Swords (Base: 100g) to Town Merchant,,,,,,
+,,,,,,
+Swords Sold,Merchant Stock,Price Reduction,Sell Price,Total Gold Received
+1,1,0%,85g,85g
+5,5,-10%,76.5g,382.5g
+10,10,-25%,63.75g,637.5g
+15,15,-40%,51g,765g
+20,20,-50%,42.5g,850g
+,,,,,
+Merchant Gold Remaining:,650g,Started with 1500g,,
+Can Buy More?:,YES,,"15 more at reduced price",,
+,,,,,,
+ECONOMIC BALANCE POINTS,,,,,,
+,,,,,,
+Item Type,Craft Cost,Vendor Sell,Profit,Break-Even Speech
+Iron Sword,40g,70g,30g,20
+Steel Armor,200g,300g,100g,35
+Enchanted Ring,150g,500g,350g,50
+Master Potion,80g,250g,170g,40
+,,,,,,
+At what Speech level does crafting become profitable?,,,,,,
+- Basic items: Speech 20+,,,,,,
+- Advanced items: Speech 40+,,,,,,
+- Master items: Speech 60+,,,,,,
+,,,,,,
+PRICE ELASTICITY ANALYSIS,,,,,,
+,,,,,,
+If iron ore price drops 50% (saturation):,,,,,,
+- Mining becomes less profitable,,,,,,
+"- Players switch to other materials (steel, elven)",,,,,,
+- Demand recovers after 48-hour restock,,,,,,
+,,,,,,
+If weapon prices rise 100% (frontier):,,,,,,
+- Crafting weapons for sale becomes VERY profitable,,,,,,
+- But material costs also high in frontier,,,,,,
+- Best strategy: Craft in city sell in frontier,,,,,,
+,,,,,,
+=== TRADING STRATEGIES ===,,,,,,
+,,,,,,
+STRATEGY 1: Resource Arbitrage,,,,,,
+1. Buy iron ore in Mining Town (-40% price),,,,,,
+2. Transport to Frontier (+50% price),,,,,,
+3. Profit: ~150% markup,,,,,,
+Required: High carry weight Speech 40+,,,,,,
+,,,,,,
+STRATEGY 2: Craft-and-Sell,,,,,,
+1. Buy materials in their cheap regions,,,,,,
+2. Craft in city (no location penalty),,,,,,
+3. Sell in high-demand regions,,,,,,
+Required: Smithing 60+ Speech 50+ Enchanting 40+,,,,,,
+,,,,,,
+STRATEGY 3: Reputation Farming,,,,,,
+1. Complete quests for single faction,,,,,,
+2. Reach +100 reputation,,,,,,
+3. Get 40% better prices (20% sell +20% buy),,,,,,
+4. Trade exclusively with that faction,,,,,,
+Required: Time investment Faction loyalty,,,,,,
+,,,,,,
+=== INSTRUCTIONS ===,,,,,,
+1. Enter item details (B5-B6),,,,,,
+2. Set your Speech skill (E5),,,,,,
+3. Set reputation (E6),,,,,,
+4. Choose merchant type (B9),,,,,,
+5. Select region (E12),,,,,,
+6. Results calculate automatically,,,,,,

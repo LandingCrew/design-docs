@@ -4,6 +4,8 @@
 **Dependencies:** [0. Magic Core](0-magic-core.md), [1. Schools of Magic](1-schools-of-magic.md), [3. Casting Mechanics](3-casting-mechanics.md)
 **Status:** Design Phase
 
+**NOTE:** This document is being updated for the **memory-based magic system**. Legacy MP references are being replaced with memory capacity, spell preparation, and failure rate management. See [0. Magic Core](0-magic-core.md) for complete system details.
+
 ---
 
 ## Magic Build Archetypes
@@ -11,14 +13,15 @@
 ### Pure Mage (Robes Only)
 
 **Build Philosophy:**
-Glass cannon - maximum magical power at the cost of physical defense.
+Glass cannon - maximum magical power and spell variety at the cost of physical defense and extreme poise vulnerability.
 
 **Stats Distribution:**
 - **HP:** Low (150-250 at high level)
-- **MP:** Very High (400-500 at high level)
+- **Memory Capacity:** Very High (80-100+ memory at high level)
 - **SP:** Medium (200-250)
+- **Education & Intuition:** Very High (60-80+ each for memory capacity)
 
-**Armor:** Robes only (+30% MP regen, minimal physical defense)
+**Armor:** Robes only (very low poise, maximum mobility, vulnerable to spell loss)
 
 **Skills Invested:**
 1. **3-4 Magic Schools** (70-100 in each)
@@ -37,40 +40,61 @@ Glass cannon - maximum magical power at the cost of physical defense.
 - Retreat if enemies close distance
 
 **Strengths:**
-- Highest spell damage in game
-- Best MP pool and regen
-- Most versatile spell selection
-- Access to all master spells
-- Ultimate magical power
+- Largest spell variety (can prepare 10-15+ spells)
+- Mastered spells have very low failure rates (5-10%)
+- Access to all master spells (multiple 7-memory spells prepared)
+- Ultimate magical versatility
+- Can adapt to any situation via large loadout
+- Highest spell damage potential
 
 **Weaknesses:**
+- **Very low poise** - single hit can break poise
+- **Catastrophic memory loss risk** - holding expensive spell (6-7 memory) when hit = massive loss
 - Dies in 2-3 hits from melee
-- Vulnerable to archers
-- Struggles if rushed by multiple enemies
-- Requires careful positioning
-- Expensive (spell books, potions)
+- Must play perfectly or lose critical spells
+- Cannot channel safely (too vulnerable to poise break)
+- Expensive (spell books, clarity potions)
 
-**Spell Loadout Example:**
-- **Left Hand:** Fireball (AoE damage)
-- **Right Hand:** Lightning Bolt (single-target burst)
-- **Quickslot 1:** Close Wounds (emergency heal)
-- **Quickslot 2:** Greater Ward (block incoming spells)
-- **Quickslot 3:** Flame Atronach (summon tank)
-- **Pre-buff:** Ebonyflesh (100 armor for 60 sec)
+**Memory Management Strategy:**
+- Master 4-6 signature spells (reduce memory cost via practice)
+- Prepare diverse loadout (damage, healing, utility, crowd control)
+- **NEVER hold expensive spells in danger** (6-7 memory loss is devastating)
+- Quick-cast only, minimize holding time
+- Use wards or summons to prevent poise breaks
+- Carry Grand Clarity potions for emergencies (1000g insurance)
+
+**Spell Loadout Example (90 memory capacity):**
+- **Mastered Core Spells (4 spells, 20 memory):**
+  - Fireball (5 memory, mastered from 7) - AoE damage
+  - Lightning Bolt (4 memory, mastered from 5) - single-target
+  - Greater Ward (4 memory, mastered from 5) - defense
+  - Fast Healing (3 memory, mastered from 4) - emergency heal
+- **Utility & Situational (6 spells, 25 memory):**
+  - Flame Atronach summon (6 memory) - tank
+  - Invisibility (5 memory) - escape
+  - Paralyze (5 memory) - CC
+  - Detect Life (3 memory) - scouting
+  - Muffle (3 memory) - stealth
+  - Reload (1 memory) - flexibility
+- **Ultimate Spells (2 spells, 14 memory):**
+  - Apocalypse (7 memory) - boss killer
+  - Mass Paralysis (7 memory) - crowd control
+- **Remaining capacity:** 31 memory for additional spells/variety
 
 ---
 
 ### Battle Mage (Light Armor)
 
 **Build Philosophy:**
-Balanced hybrid - competent in both melee and magic, master of neither.
+Balanced hybrid - competent in both melee and magic, master of neither. Uses Reload spell for tactical flexibility.
 
 **Stats Distribution:**
 - **HP:** Medium (250-350)
-- **MP:** Medium (250-350)
+- **Memory Capacity:** Medium (45-60 memory at high level)
 - **SP:** Medium-High (250-300)
+- **Education & Intuition:** Medium (40-50 each)
 
-**Armor:** Light armor (-20% max MP, -20% MP regen, medium defense)
+**Armor:** Light armor (medium poise, reasonable spell protection, good mobility)
 
 **Skills Invested:**
 1. **1-2 Magic Schools** (50-75 in each)

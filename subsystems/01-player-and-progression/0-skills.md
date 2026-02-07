@@ -145,33 +145,41 @@ Special perks earned at prime-number character levels (2, 3, 5, 7, 11, 13...). A
 
 This table shows which skills contribute to which base stats (8 core stats):
 
-**Contribution Values:**
-- Major (X) = 0.10 per skill level
-- Minor (O) = 0.05 per skill level
-- Split Major (X/X) = 0.05 + 0.05 per skill level
+**Stat Contribution Formula:**
+```
+stat_contribution = coefficient × ln(skill_level + 1)
+```
+
+**Contribution Tiers (Golden Ratio: 1.618):**
+- **Major (M)** = 10.0 coefficient (Primary stat for this skill)
+- **Greater (G)** = 6.18 coefficient (Strong secondary - split majors)
+- **Lesser (L)** = 3.82 coefficient (Meaningful contribution)
+- **Minor (m)** = 2.36 coefficient (Universal survivability - ALL skills grant AGI & END)
+
+**Note:** Logarithmic scaling means the first 25 skill points give ~70% of maximum stat benefit, encouraging diverse builds over min-maxing a single skill.
 
 | Skills          | STR | AGI | DEX | END | INT | EDU | SOC | LCK |
 | --------------- | --- | --- | --- | --- | --- | --- | --- | --- |
-| **Evasion**     |     | X   |     | O   |     |     |     |     |
-| **Heavy Armor** | O   |     |     | X   |     |     |     |     |
-| **Combat Arts** | X   | O   | O   | O   |     |     |     |     |
-| **One-Handed**  | X   | O   |     |     |     |     |     |     |
-| **Two-Handed**  | X   |     |     |     |     |     |     |     |
-| **Marksman**    |     |     | X   |     |     |  O  |     |     |
-| **Sneak**       |     | X   |     |     | O   |     |     |     |
-| **Wayfarer**    |     |     | O   | X   | O   |     |  0  |     |
-| **Finesse**     | O   |     | X   |     |     |     |     |     |
-| **Subterfuge**  |     |     | X   |     | O   |     | O   |     |
-| **Influence**   |     |     |     |     | O   |     | X   |     |
-| **Illusion**    |     |     |     |     | X   |     |     |     |
-| **Conjuration** |     |     |     | O   | O   | X   |     |     |
-| **Evocation**   |     | O   |     | O   | X   | X   |     |     |
-| **Divine Arts** |     |     |     |     | X   | X   |  O  |     |
-| **Abjuration**  |     | O   |     |     | O   | X   |     |     |
-| **Mysticism**   |     |     |     |     | X   | O   |     |     |
-| **Enchanting**  |     |     |     |     |     | X   |     |     |
-| **Smithing**    | O   |     | O   | O   |     | X   |     |     |
-| **Alchemy**     |     |     |     |     | O   | X   |     |     |
+| **Evasion**     |     | M   |     | L+m |     |     |     |     |
+| **Heavy Armor** | L   | m   |     | M+m |     |     |     |     |
+| **Combat Arts** | M   | L+m | L   | L+m |     |     |     |     |
+| **One-Handed**  | M   | L+m |     | m   |     |     |     |     |
+| **Two-Handed**  | M   | m   |     | m   |     |     |     |     |
+| **Marksman**    |     | m   | M   | m   |     | L   |     |     |
+| **Sneak**       |     | M   |     | m   | L   |     |     |     |
+| **Wayfarer**    |     | m   | L   | M+m | L   |     | L   |     |
+| **Finesse**     | L   | m   | M   | m   |     |     |     |     |
+| **Subterfuge**  |     | m   | M   | m   | L   |     | M   |     |
+| **Influence**   |     | m   |     | m   | L   |     | M   |     |
+| **Illusion**    |     | m   |     | m   | M   |     |     |     |
+| **Conjuration** |     | m   |     | L+m | L   | M   |     |     |
+| **Evocation**   |     | L+m |     | L+m | G   | G   |     |     |
+| **Divine Arts** |     | m   |     | m   | G   | G   | L   |     |
+| **Abjuration**  |     | L+m |     | m   | L   | M   |     |     |
+| **Mysticism**   |     | m   |     | m   | M   | L   |     |     |
+| **Enchanting**  |     | m   |     | m   |     | M   |     |     |
+| **Smithing**    | L   | m   | L   | L+m |     | M   |     |     |
+| **Alchemy**     |     | m   |     | m   | L   | M   |     |     |
 
 **Legend:**
 - **STR** = Strength (melee damage, carry weight, knockback)
@@ -181,25 +189,62 @@ This table shows which skills contribute to which base stats (8 core stats):
 - **INT** = Intuition (magic pool, perception, natural magic affinity)
 - **EDU** = Education (learned magic, crafting quality, knowledge)
 - **SOC** = Social Standing (barter, persuasion, faction reputation)
-- **LCK** = Luck (RNG nudging, rare loot, critical success - not directly skill-derived)
+- **LCK** = Luck (skill diversity based - see below)
+
+**Tier Symbols:**
+- **M** = Major (10.0 coefficient)
+- **G** = Greater (6.18 coefficient - split majors)
+- **L** = Lesser (3.82 coefficient)
+- **m** = Minor (2.36 coefficient - universal survivability, ALL skills have this for AGI & END)
 
 **Stat Distribution Summary:**
-- **Strength**: 5 skills (3 major: Combat Arts, One-Handed, Two-Handed | 3 minor: Heavy Armor, Finesse, Smithing)
-- **Agility**: 5 skills (2 major: Evasion, Sneak | 4 minor: Combat Arts, One-Handed, Evocation, Abjuration)
-- **Dexterity**: 4 skills (3 major: Marksman, Finesse, Subterfuge | 3 minor: Combat Arts, Wayfarer, Smithing)
-- **Endurance**: 6 skills (2 major: Heavy Armor, Wayfarer | 5 minor: Evasion, Combat Arts, Smithing, Conjuration, Evocation)
-- **Intuition**: 8 skills (3 major: Illusion, Mysticism, Evocation*, Divine Arts* | 6 minor: Sneak, Wayfarer, Influence, Alchemy, Abjuration, Conjuration)
-- **Education**: 7 skills (5 major: Smithing, Alchemy, Conjuration, Abjuration, Enchanting, Evocation*, Divine Arts* | 2 minor: Mysticism, Marksman)
-- **Social Standing**: 4 skills (1 major: Influence | 3 minor: Divine Arts, Subterfuge, Wayfarer)
-- **Luck**: No direct skill mapping (affected by perks/traits only)
+- **Strength**: 6 skills (3 Major: Combat Arts, One-Handed, Two-Handed | 3 Lesser: Heavy Armor, Finesse, Smithing)
+- **Agility**: 20 skills (2 Major: Evasion, Sneak | 6 Lesser: Combat Arts, One-Handed, Evocation, Abjuration | 20 Minor: ALL skills for survivability)
+- **Dexterity**: 6 skills (3 Major: Marksman, Finesse, Subterfuge | 3 Lesser: Combat Arts, Wayfarer, Smithing)
+- **Endurance**: 20 skills (2 Major: Heavy Armor, Wayfarer | 8 Lesser: Evasion, Combat Arts, Smithing, Conjuration, Evocation, Abjuration | 20 Minor: ALL skills for survivability)
+- **Intuition**: 10 skills (2 Major: Illusion, Mysticism | 2 Greater: Evocation, Divine Arts | 6 Lesser: Sneak, Wayfarer, Influence, Alchemy, Abjuration, Conjuration)
+- **Education**: 9 skills (5 Major: Smithing, Alchemy, Conjuration, Abjuration, Enchanting | 2 Greater: Evocation, Divine Arts | 2 Lesser: Mysticism, Marksman)
+- **Social Standing**: 4 skills (2 Major: Influence, Subterfuge | 2 Lesser: Divine Arts, Wayfarer)
+- **Luck**: Calculated from skill diversity - see Luck formula below
 
 > **Design Notes:**
-> - **Split Major Stats**: Evocation and Divine Arts split their major contribution (0.05 INT + 0.05 EDU) representing both natural talent and learned technique
-> - **Agility Rebalance**: Previously unmapped; now derives from movement-focused skills (Evasion, Sneak) and benefits battle mages who need mobility (Evocation, Abjuration minor)
-> - **Dexterity Rebalance**: Reduced from 5 major skills to 3 to prevent over-indexing
-> - **Intuition Rebalance**: Reduced from 5 pure major skills to 3 major + 2 split to balance magic stat progression
-> - **Conjuration Design**: Shifted to Education-primary to represent summoning as learned knowledge rather than pure intuition
-> - **Combat Mage Survivability**: Evocation grants AGI+END minor, Conjuration grants END minor, Abjuration grants AGI minor (representing active combat engagement and need for physical resilience)
-> - **Social Connections**: Divine Arts grants SOC minor (religious/healing aspect), Subterfuge grants SOC minor (criminal underworld), Wayfarer grants SOC minor (wilderness guides, ranger networks, survival communities)
-> - **Marksman Expertise**: Grants EDU minor (trajectory calculation, weapon maintenance knowledge, hunting lore)
-> - **Luck Exception**: Has no direct skill-based progression; must be increased through perks, traits, or gear
+> - **Logarithmic Scaling**: All stat contributions use `coefficient × ln(skill + 1)` for diminishing returns
+> - **Universal Survivability**: ALL 20 skills grant Minor (2.36) to both Agility and Endurance, preventing archetype starvation
+> - **Split Major Stats**: Evocation and Divine Arts use Greater (6.18) for both INT and EDU, representing natural talent + learned technique
+> - **Agility Balance**: All skills grant Minor AGI (survivability), with Major from Evasion/Sneak and Lesser from combat-mobility skills
+> - **Endurance Balance**: All skills grant Minor END (survivability), with Major from Heavy Armor/Wayfarer and Lesser from physically-demanding skills
+> - **Dexterity Focus**: Only 3 Major sources (Marksman, Finesse, Subterfuge) to prevent over-indexing precision builds
+> - **Intuition Sources**: 2 Major (Illusion, Mysticism), 2 Greater (Evocation, Divine Arts), 6 Lesser for diverse magic builds
+> - **Education Sources**: 5 Major crafting/magic skills, 2 Greater (Evocation, Divine Arts), 2 Lesser for knowledge-seekers
+> - **Social Standing**: 2 Major paths (Influence = overt diplomacy, Subterfuge = covert manipulation), 2 Lesser (Divine Arts = religious authority, Wayfarer = wilderness networks)
+> - **Luck Formula**: `NORM.DIST(skills_invested, AVERAGE(stats), STDEV(stats), FALSE) × 100` - rewards skill diversity and balanced stat distribution, not total skill points
+
+---
+
+## Luck Calculation
+
+Unlike other stats, **Luck is calculated dynamically** based on your playstyle:
+
+```
+Luck = NORM.DIST(skills_invested, AVERAGE(stats), STDEV(stats), FALSE) × 100
+```
+
+**Where:**
+- **skills_invested**: Total number of different skills you've put points into (0-20)
+- **AVERAGE(stats)**: Mean of your 7 primary stats (STR, AGI, DEX, END, INT, EDU, SOC)
+- **STDEV(stats)**: Standard deviation of those stats
+
+**What This Means:**
+- **Jack-of-all-trades** (15+ different skills, balanced stats): High Luck (~8-12)
+- **Focused hybrid** (6-10 skills, moderate variance): Medium Luck (~4-7)
+- **Pure specialist** (3-5 skills, high variance): Low Luck (~1-3)
+
+**Design Philosophy:** Lucky adventurers are well-rounded and have diverse experiences. Specialists don't get lucky - they rely on mastery and preparation, not chance.
+
+**Additional Luck Sources:**
+- **Gear**: Enchanted items, lucky charms, blessed amulets
+- **Perks**: Destiny perks or special abilities that grant flat Luck bonuses
+- **Consumables**: Luck potions, fortunes, blessings from shrines
+- **Traits/Race**: Some character creation choices may grant starting Luck bonuses
+
+Base Luck from skill diversity is **additive** with these bonuses.

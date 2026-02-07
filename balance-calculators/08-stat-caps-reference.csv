@@ -1,0 +1,270 @@
+=== STAT CAPS & BREAKPOINTS REFERENCE ===,,,,,,,
+Version: 1.0,,,,,,,
+Complete reference for all hard caps and diminishing returns,,,,,,,
+,,,,,,,
+=== DEFENSIVE CAPS ===,,,,,,,
+,,,,,,,
+Stat,Hard Cap,Formula to Reach,Reasoning,Notes
+Armor Reduction,80%,400+ armor rating,"Prevents invincibility, always vulnerable",Non-linear scaling
+Magic Resistance,80%,Varies by source,"Consistent with physical armor",Per resistance type
+Fire Resistance,80%,Equipment + perks,"Elemental cap, prevents immunity",Separate from physical
+Frost Resistance,80%,Equipment + perks,"Elemental cap, prevents immunity",Separate from physical
+Shock Resistance,80%,Equipment + perks,"Elemental cap, prevents immunity",Separate from physical
+Poison Resistance,80%,Equipment + perks,"Status effect cap, mitigates not negates",Can still be poisoned
+Holy Resistance,80%,Racial + equipment,"Magical damage cap",Rare to reach
+Shadow Resistance,80%,Racial + equipment,"Magical damage cap",Rare to reach
+Dodge Chance,50%,High Agility + perks,"Cannot perma-dodge, 50% reasonable",Still hit half the time
+Block Reduction,80%,Shield + perks,"Same as armor, prevents 100% block",Stamina cost still applies
+Damage Absorption,90%,Wards + buffs,"Extreme mitigation for temporary effects",Very rare cap
+Debuff Duration Reduction,80%,400 Debuff Resistance,"Can reduce debuffs by 80% max",Still affected
+,,,,,,,
+=== OFFENSIVE CAPS ===,,,,,,,
+,,,,,,,
+Stat,Hard Cap,Formula to Reach,Reasoning,Notes
+Critical Hit Chance,50%,High Dex/Int + perks,"Prevents 100% crit, maintains RNG element",Still requires skill
+Critical Damage Mult,3.0×,Str/Dex + perks,"Prevents one-shot builds (max 300%)",Crits still deadly
+Armor Penetration,50%,250 Str/Dex,"Cannot fully ignore armor, some always applies",Major impact vs tanks
+Attack Speed Bonus,100%,High Action Speed + perks,"2× attack speed max, prevents absurd DPS",Still very fast
+Cast Speed Bonus,100%,High Action Speed + perks,"2× cast speed max, prevents instant casts",Maintains cast time
+Damage Multiplier,200%,All sources combined,"3× damage max from all bonuses",Includes perks/buffs
+Lifesteal %,50%,Perks + enchantments,"Cannot full heal on every hit, sustain viable",Moderate healing
+Spell Magnitude,200%,High Magical Power,"3× base spell damage/effect max",Archmage level
+Physical Power Mult,1.80×,500 Physical Power,"80% damage bonus max from stats",Realistic ceiling
+Magical Power Mult,1.80×,400 Magical Power,"80% magnitude bonus max from stats",Realistic ceiling
+,,,,,,,
+=== MOBILITY CAPS ===,,,,,,,
+,,,,,,,
+Stat,Hard Cap,Formula to Reach,Reasoning,Notes
+Movement Speed,150%,"Agility 150, no armor","1.5× base speed, prevents game-breaking",Still meaningful
+Action Speed,200%,650 Action Speed (realistic: 400),"3× speed max, prevents instant actions",Extremely fast
+Sprint Speed,200%,Same as movement,"3× base sprint, consistent with action",Marathon sprinting
+Dodge Recovery,50%,High Combat Fluidity,"0.5× recovery max, near-instant dodges",I-frame spam risk
+Jump Height,150%,Agility + perks,"1.5× jump max, prevents sequence breaks",Platforming viable
+Climbing Speed,150%,Agility + Endurance,"1.5× climb max",Traversal improvement
+Swimming Speed,150%,Agility + Endurance,"1.5× swim max",Water mobility
+,,,,,,,
+=== RESOURCE CAPS ===,,,,,,,
+,,,,,,,
+Stat,Hard Cap,Formula to Reach,Reasoning,Notes
+Max Health,9999 HP,Stat investment + levels,"Prevents integer overflow, realistic max",Tank builds ~2000 HP
+Max Stamina,9999 SP,Endurance + Social,"Prevents overflow, realistic max ~1000 SP",Warrior pools
+Max Memory,150 slots,Int + Edu + perks,"Prevents excessive spell preparation, realistic max ~120",Archmage capacity
+HP Regeneration,50 HP/sec,Endurance + perks + buffs,"Prevents regen tanking, sustain viable",Still need healing
+SP Regeneration,100 SP/sec,Endurance + perks,"High regen for active play, not infinite",Combat sustain
+Memory Recovery,"Rest or Clarity potions",N/A,"Memory system - no regen, must rest or use potions",Spell management
+HP per Hit (Lifesteal),50%,Enchants + perks,"Cannot full heal per hit, moderate sustain",Requires damage
+SP on Kill,100 SP,Perks + effects,"Cannot infinitely chain attacks",Execution reward
+Memory on Kill,"N/A (memory system)",Perks + effects,"Memory restored at rest only",No instant rewards
+,,,,,,,
+=== DURATION CAPS ===,,,,,,,
+,,,,,,,
+Stat,Hard Cap,Formula to Reach,Reasoning,Notes
+Buff Duration,300%,High Magical Power + perks,"3× base duration, prevents permanent buffs",Still expires
+Debuff Duration (Enemy),300%,Magical Power + perks,"Can extend enemy debuffs 3× max",Strong CC
+Debuff Duration (Self),20%,400 Debuff Resistance,"Reduce self-debuffs by 80% max",Still affected
+Cooldown Reduction,70%,High CDR stats + perks,"Cannot reach 0 cooldown, 30% minimum remains",Spam prevention
+Potion Duration,300%,Resourcefulness + perks,"3× base duration max",Consumable efficiency
+Food Buff Duration,300%,Resourcefulness + perks,"3× base duration max",Meal prep value
+Status Effect Duration,300%,Perks + enchants,"Bleeds/burns last 3× max",DoT scaling
+,,,,,,,
+=== CRAFTING & UTILITY CAPS ===,,,,,,,
+,,,,,,,
+Stat,Hard Cap,Formula to Reach,Reasoning,Notes
+Crafting Quality Bonus,+50%,High skill + Resourcefulness,"Masterwork + 50% quality max",Beyond masterwork
+Material Yield Bonus,+50%,High Resourcefulness,"50% bonus materials max",Crafting economy
+Arrow Recovery Rate,95%,High Resourcefulness + perks,"Cannot recover 100%, prevents infinite ammo",Still need some arrows
+Lockpicking Speed,300%,High Interaction Speed + perks,"3× speed max, instant picks unrealistic",Skill still matters
+Loot Quantity Bonus,+100%,Luck + perks,"2× loot max, prevents economy break",Rare items still rare
+Gold Find,+200%,Luck + perks,"3× gold max, prevents inflation",Economy balance
+Experience Gain,+100%,Perks + buffs,"2× XP max, prevents power leveling",Leveling speed
+Skill Gain,+100%,Perks + buffs,"2× skill XP max",Progression balance
+,,,,,,,
+=== DAMAGE TYPE RESISTANCE CAPS ===,,,,,,,
+,,,,,,,
+All elemental/damage type resistances capped at 80%,,,,,,,
+,,,,,,,
+Resistance Type,Cap,Typical Max Realistic,Notes,,
+Physical (Armor),80%,400+ armor,"Universal armor cap, prevents invincibility",,
+Fire,80%,Heavy investment,"Elemental resist cap, rare to max naturally",,
+Frost,80%,Heavy investment,"Elemental resist cap, racial bonuses help",,
+Shock,80%,Heavy investment,"Elemental resist cap, equipment heavy",,
+Poison,80%,Racial + perks,"Status effect cap, common on heavy armor",,
+Disease,80%,Racial + perks,"Status effect cap, preventative value",,
+Holy,80%,Racial (undead),"Magical damage cap, niche resistance",,
+Shadow,80%,Racial + equipment,"Magical damage cap, niche resistance",,
+Bleed,80%,Armor + perks,"Physical status cap, separate from armor",,
+Stun,80%,Endurance + perks,"CC resistance cap, reduces duration not chance",,
+True Damage,0%,Cannot resist,"By design, bypasses all defenses",,
+,,,,,,,
+=== SOFT CAPS (DIMINISHING RETURNS) ===,,,,,,,
+,,,,,,,
+These stats have diminishing returns BEFORE hitting hard cap,,,,,,,
+,,,,,,,
+ARMOR RATING EFFICIENCY,,,,,,,
+Range,Efficiency,Reduction %,Notes,Recommendation
+0-100 armor,High,"0-50%, linear gains",Most efficient zone,Invest here first
+100-200 armor,Moderate,"50-67%, diminishing starts",Still valuable,Good for tanks
+200-400 armor,Low,"67-80%, heavy diminishing",Approaching cap,Only for pure tanks
+400+ armor,Capped,80% (cannot exceed),"No further benefit, wasted stats",Don't invest beyond
+,,,,,,,
+MOVEMENT SPEED EFFICIENCY,,,,,,,
+Agility Range,Efficiency,Movement Bonus,Notes,Recommendation
+0-60 Agi,High,"+0-20%, linear",Most cost-effective,Baseline investment
+60-120 Agi,Moderate,"+20-40%, moderate gains",Diminishing returns start,Rogues/Archers
+120-150 Agi,Low,"+40-50%, poor gains",Approaching cap,Only for speed builds
+150+ Agi,Capped,"+50% (cannot exceed)",No further benefit,Don't exceed
+,,,,,,,
+CRITICAL CHANCE EFFICIENCY,,,,,,,
+Dex/Int Range,Efficiency,Crit %,Notes,Recommendation
+0-50 Dex,High,"5-10%, linear",Base critical chance,Standard builds
+50-100 Dex,Moderate,"10-15%, good gains",Crit builds viable,Rogue/Archer focus
+100-200 Dex,Low,"15-25%, diminishing",Approaching practical limit,Specialist only
+200+ Dex,Very Low,"25-30%, heavy diminishing",Nearing cap (50%),Perks needed for cap
+,,,,,,,
+RESOURCE REGENERATION EFFICIENCY,,,,,,,
+Endurance Range,Efficiency,SP Regen (OOC),Notes,Recommendation
+0-50 End,High,"10-35 SP/sec, linear",Cost-effective regen,All builds
+50-100 End,Moderate,"35-60 SP/sec, good",Sustain builds,Warriors/Tanks
+100-150 End,Low,"60-85 SP/sec, diminishing",Nearing practical limit,Tank specialists
+150+ End,Very Low,"85-100 SP/sec (cap)",Poor investment,Hit cap elsewhere
+,,,,,,,
+=== BREAKPOINT ANALYSIS ===,,,,,,,
+,,,,,,,
+Key stat values where major thresholds are reached,,,,,,,
+,,,,,,,
+AGILITY BREAKPOINTS,,,,,,,
+Agility,Effect,Notes,,
+30,"+10% movement (baseline)",Typical starting value,,
+60,"+20% movement",First major breakpoint,,
+90,"+30% movement",Diminishing returns start,,
+120,"+40% movement",Second major breakpoint,,
+150,"+50% movement (CAP)",Hard cap reached,,
+,,,,,,,
+STRENGTH BREAKPOINTS (Physical Power),,,,,,,
+Strength,Physical Power,Damage Mult,Notes
+40,80 (pure Str),0.96×,"Below baseline, penalty applies"
+80,160,1.12×,Baseline warrior
+120,240,1.28×,Strong warrior
+160,320,1.44×,Very strong
+200,400,1.60×,Near max realistic
+250,500,1.80× (CAP),Hard cap reached
+,,,,,,,
+ENDURANCE BREAKPOINTS (HP),,,,,,,
+Endurance,HP Contribution,Total HP (Base 100),Notes
+40,80 HP,~400 HP,"Low endurance, fragile"
+60,120 HP,~600 HP,Moderate survivability
+80,160 HP,~800 HP,Good tank baseline
+100,200 HP,~1000 HP,Strong tank
+150,300 HP,~1400 HP,Maximum realistic tank
+,,,,,,,
+EDUCATION BREAKPOINTS (Magical Power),,,,,,,
+Education,Magical Power,Magnitude Mult,Notes
+40,80 (pure Edu),1.00×,Baseline scholar
+60,120,1.10×,Competent mage
+80,160,1.20×,Strong mage
+100,200,1.30×,Powerful mage
+150,300,1.55×,Archmage level
+200,400,1.80× (CAP),Hard cap reached
+,,,,,,,
+DEXTERITY BREAKPOINTS (Crit Chance),,,,,,,
+Dexterity,Melee Crit,Ranged Crit,Notes
+30,8%,12.5%,Baseline precision
+50,10%,15.5%,Above average
+80,13%,20%,High precision
+100,15%,23%,Very high precision
+150,20%,30.5%,Specialist level
+200,25%,38%,Near cap (50%)
+,,,,,,,
+=== CAP PRIORITY GUIDE ===,,,,,,,
+,,,,,,,
+"Which caps should you try to reach, and which should you ignore?",,,,,,,
+,,,,,,,
+HIGH PRIORITY CAPS (Worth Pursuing),,,,,,,
+Cap,Priority,Why?,,
+Armor Reduction 80%,HIGH,"Core defensive stat, achievable at 400 armor",,
+Magic Resistance 50%+,MEDIUM,"Strong defense, 80% hard to reach naturally",,
+Debuff Resistance 200+,MEDIUM,"Realistic goal, -40% debuff duration valuable",,
+Armor Pen 20-30%,HIGH,"Achievable with normal stats, strong vs tanks",,
+Movement Speed 120%+,MEDIUM,"Noticeable improvement, not hard to reach",,
+Critical Chance 15-25%,HIGH,"Achievable with Dex focus, huge DPS boost",,
+,,,,,,,
+MEDIUM PRIORITY CAPS (Specialist Builds),,,,,,,
+Cap,Priority,Why?,,
+Critical Chance 40%+,MEDIUM,"Requires heavy investment, crit specialist",,
+Action Speed 1.5×,MEDIUM,"Noticeable QoL, requires balanced stats",,
+HP Regen 20+ HP/sec,MEDIUM,"Strong sustain, requires Endurance focus",,
+Cooldown Reduction 40%+,MEDIUM,"Meaningful reduction, requires Education",,
+Lifesteal 30%+,MEDIUM,"Sustain build, requires perks + enchants",,
+,,,,,,,
+LOW PRIORITY CAPS (Whale Builds Only),,,,,,,
+Cap,Priority,Why?,,
+Movement Speed 150%,LOW,"Requires 150 Agi, massive investment for 50%",,
+Action Speed 2.0×,LOW,"Requires 650 Action Speed, unrealistic",,
+Critical Chance 50%,LOW,"Requires 450 Dex + perks, extreme specialist",,
+Armor Pen 50%,LOW,"Requires 250 Str, unrealistic for damage gain",,
+Debuff Resist 400,LOW,"Requires 400 points, opportunity cost too high",,
+All Elemental Resists 80%,LOW,"Impossible naturally, gear can't max all",,
+,,,,,,,
+=== OVERCAP ANALYSIS ===,,,,,,,
+,,,,,,,
+What happens when you exceed caps?,,,,,,,
+,,,,,,,
+Stat,Overcap Behavior,Wasted Investment?,Notes
+Armor Reduction,Capped at 80%,"Yes, 400+ armor wasted",Stop at 400 armor
+Movement Speed,Capped at 1.5×,"Yes, 150+ Agi wasted for movement",Other benefits still apply
+Critical Chance,Capped at 50%,"Yes, excess Dex wasted for crits",Dex helps other stats
+Armor Penetration,Capped at 50%,"Yes, excess Str/Dex wasted for pen",Still benefits damage/other
+Debuff Resistance,Capped at 0.2× (80% reduction),"Yes, 400+ resistance wasted",Rare to overcap
+Damage Multiplier,Capped at 3.0×,"Yes, excess bonuses ignored",Perks + buffs can overcap
+Attack Speed,Capped at 2.0×,"Yes, excess ignored",Animation limits apply
+,,,,,,,
+IMPORTANT: Most caps are HARD CAPS,,,,,,,
+"- You cannot exceed the cap value, even temporarily",,,,,,,
+"- Buffs/potions that would push you over cap are wasted",,,,,,
+"- Plan builds to stay 5-10% below cap for buff flexibility",,,,,,
+,,,,,,,
+=== ANTI-CAP DESIGN ===,,,,,,,
+,,,,,,,
+Mechanics that prevent reaching caps too easily,,,,,,,
+,,,,,,,
+MUTUAL EXCLUSIVITY,,,,,,,
+Mechanic,Effect,Why?,,
+Heavy Armor + Light Armor,"Cannot wear both, limits armor cap",Forces specialization,,
+Fire Resist + Frost Resist,"Hard to max both, gear conflicts",Choose vulnerabilities,,
+Physical + Magical builds,"Stat spread limits both Power stats",Hybrid penalty,,
+Offense + Defense,"Stats compete, limits both",Glass cannon vs tank,,
+,,,,,,,
+OPPORTUNITY COSTS,,,,,,,
+Investment,Sacrifice,Trade-off,,
+400 Armor (80% reduction),Low Agility/Dexterity,"Slow, low crit, poor actions",,
+150 Agility (50% movement),Low Strength/Endurance,"Low damage, low HP",,
+200+ Crit Investment,Low Endurance/Int,"Fragile, low magic",,
+All resistances,Poor offensive stats,"Cannot kill fast",,
+,,,,,,,
+GEAR LIMITATIONS,,,,,,,
+Limitation,Effect,Cap Impact,,
+Armor slots (7 total),"Limited enchantment slots, cannot max all resists",Prevents 80% all resists,,
+Weapon slots (2H or 1H+Shield),"Shield gives armor, 2H gives damage",Offense vs defense,,
+Ring/Amulet limit (2+1),"Limited utility slots, prioritize bonuses",Cannot stack everything,,
+Weight limits,"Heavy armor slows, light armor fragile",Mobility vs protection,,
+,,,,,,,
+=== CAP SUMMARY TABLE ===,,,,,,,
+,,,,,,,
+Quick reference: Which caps matter for which builds?,,,,,,,
+,,,,,,,
+Build Archetype,Priority Caps,Ignore Caps,Target Values
+Pure Warrior,"Armor 80%, Armor Pen 20%+, HP 1000+","Magic resist, Cast speed, Memory capacity","400 armor, 80 Str, 100 End"
+Tank,"Armor 80%, Debuff Resist 200+, HP 1200+","Crit chance, Movement, Attack speed","400 armor, 100 End, 80 Int"
+Battlemage,"Magic resist 50%+, Memory 80+, Armor 50%+","Physical power, Armor pen, Crit dmg","60 Str, 90 Int, 80 Edu"
+Archer,"Crit 25%+, Armor Pen 20%+, Movement 130%","Armor, Debuff resist, Memory capacity","100 Dex, 80 Int, 90 Agi"
+Stealth Rogue,"Crit 30%+, Movement 140%+, Action Speed 1.5×","Armor, HP, Debuff resist","100 Agi, 90 Dex, 60 Int"
+Mage,"Memory 100+, Magic Power 1.6×+, Spell failure <5%","Armor, HP, Physical power","100 Int, 100 Edu, 40 End"
+Hybrid,"Balanced, no hard caps",None,"60-70 all stats"
+,,,,,,,
+=== INSTRUCTIONS ===,,,,,,,
+1. Use this as reference when planning builds,,,,,,,
+2. Check breakpoints before heavy stat investment,,,,,,,
+3. Stop investing when approaching caps (5-10% below),,,,,,,
+4. Identify wasted stats in overcapped areas,,,,,,,
+5. Balance multiple stats instead of maxing one,,,,,,,
+6. Consider opportunity costs of cap-chasing,,,,,,,

@@ -11,94 +11,136 @@
 ### Core Philosophy
 
 **Design Principle:**
-You CAN cast any spell you've learned, but under-skilled casting is risky.
+You CAN cast any prepared spell infinitely, but every cast has a failure chance. Master your spells through practice to reduce failure.
 
 **Purpose:**
-- Prevent low-level cheese (learning master spells at skill 1)
-- Reward skill investment
-- Create meaningful risk/reward decisions
-- Maintain player agency (no hard blocks)
+- Create tension in every cast (even prepared spells can fail)
+- Reward specialization (mastered spells more reliable)
+- Encourage intentional spell selection
+- Balance power through probability, not resource depletion
 
 ---
 
-### Failure Chance Formula
+### Base Failure Rate
+
+**Every spell has a base failure rate** determined by:
+1. **Spell complexity** (1-7 memory cost correlates with difficulty)
+2. **Your skill level** in that magic school
+3. **Mastery level** (how many times you've cast this spell)
 
 ```
-Failure Chance = max(0, (Required Skill - Your Skill) × 2)%
+Base Failure Rate = Spell Base Failure × Skill Multiplier × Mastery Multiplier
 ```
 
-**Breakdown:**
-- If your skill ≥ required skill: 0% failure (safe)
-- For every point below requirement: +2% failure chance
-- Caps at 100% failure (when 50+ points below)
+**Spell Base Failure (by complexity):**
+
+| Memory Cost | Base Failure | Examples |
+|-------------|--------------|----------|
+| 1-2 (Simple) | 10% base | Sparks, Minor Healing |
+| 3-4 (Moderate) | 20% base | Firebolt, Lesser Ward |
+| 5-6 (Complex) | 30% base | Fireball, Greater Ward |
+| 7 (Ultimate) | 40% base | Apocalypse, Mass Paralysis |
+
+**Skill Multiplier:**
+```
+Skill Multiplier = max(0.5, (100 - Skill Level) / 100)
+
+Examples:
+Skill 0: ×1.0 (full penalty)
+Skill 25: ×0.75 (25% reduction)
+Skill 50: ×0.5 (half failure)
+Skill 75: ×0.5 (capped at 50% reduction)
+Skill 100: ×0.5 (capped at 50% reduction)
+```
+
+**Mastery Multiplier** (practice-based):
+```
+0-50 casts: ×1.0 (no mastery)
+51-100 casts: ×0.8 (practiced)
+101-200 casts: ×0.6 (competent)
+201+ casts: ×0.4 (mastered)
+```
 
 ---
 
 ### Failure Chance Examples
 
-| Required Skill | Your Skill | Skill Gap | Failure Chance |
-|----------------|------------|-----------|----------------|
-| 50 | 50 | 0 | 0% (safe) |
-| 50 | 45 | -5 | 10% |
-| 50 | 40 | -10 | 20% |
-| 50 | 35 | -15 | 30% |
-| 50 | 25 | -25 | 50% (coin flip) |
-| 50 | 15 | -35 | 70% |
-| 50 | 5 | -45 | 90% |
-| 50 | 0 | -50 | 100% (always fails) |
+**Fireball (5 memory, 30% base failure):**
+
+| Skill Level | Casts | Skill Multi | Mastery Multi | Final Failure |
+|-------------|-------|-------------|---------------|---------------|
+| 25 | 10 | ×0.75 | ×1.0 | 22.5% |
+| 50 | 60 | ×0.5 | ×0.8 | 12% |
+| 75 | 150 | ×0.5 | ×0.6 | 9% |
+| 100 | 250 | ×0.5 | ×0.4 | 6% (very reliable) |
+
+**Apocalypse (7 memory, 40% base failure):**
+
+| Skill Level | Casts | Skill Multi | Mastery Multi | Final Failure |
+|-------------|-------|-------------|---------------|---------------|
+| 50 | 5 | ×0.5 | ×1.0 | 20% |
+| 75 | 30 | ×0.5 | ×1.0 | 20% |
+| 100 | 120 | ×0.5 | ×0.6 | 12% |
+| 100 | 220 | ×0.5 | ×0.4 | 8% (mastered) |
 
 **Philosophy:**
-5-10 points below = risky but viable. 25+ points below = gambling with your life.
+Even master mages have ~5-10% failure on complex spells. Mastery through practice is essential for reliability.
 
 ---
 
 ### What Happens on Spell Failure
 
 **Consequences:**
-1. **MP Consumed:** Full spell cost deducted (wasted MP)
-2. **Spell Fizzles:** No effect applied (damage, healing, buffs, etc.)
-3. **Cast Animation Plays:** You're locked in animation (vulnerable)
-4. **Particle Effect:** Small fizzle effect (visual feedback)
+1. **Spell Fizzles:** No effect applied (damage, healing, buffs, etc.)
+2. **Cast Animation Plays:** You're locked in animation (vulnerable)
+3. **Particle Effect:** Small fizzle effect (visual feedback)
+4. **No Memory Loss:** Spell remains prepared (can try again)
 5. **Skill EXP Gained:** 0.5× normal EXP (learn from mistakes)
+
+**Critical Difference from MP System:**
+- **No resource wasted** - you can try again immediately
+- Failure is time-based punishment (wasted cast time + vulnerability)
+- Repeated failures can doom you in combat (time = enemy damage)
 
 **Combat Impact:**
 
-**Scenario: Combat Fireball Failure**
-- You cast Fireball (100 MP)
-- 30% failure chance, you get unlucky
-- MP: 200 → 100 (wasted 100 MP)
+**Scenario: Combat Fireball Failure (12% chance)**
+- You cast Fireball (1.2 sec cast time)
+- Failure chance: 12%, you get unlucky
 - Effect: Nothing (no damage)
-- Time: 1.2 sec animation (enemy gets free hits)
-- Result: You're now low on MP, took damage, enemy still alive
+- Time: 1.2 sec animation wasted (enemy gets free hits)
+- Spell: Still prepared (can cast again)
+- Result: Took damage during failed cast, enemy still alive, try again
 
-**Scenario: Critical Heal Failure**
-- Low HP (20/100), cast Close Wounds (100 HP heal)
-- 40% failure chance (under-skilled)
+**Scenario: Critical Heal Failure (15% chance)**
+- Low HP (20/100), cast Fast Healing
+- 15% failure chance (practiced spell)
 - Spell fails
-- MP wasted, still at 20 HP
-- Next enemy hit kills you
-- **Death because you relied on risky spell**
+- Still at 20 HP, took damage during cast
+- Can try again, but might die first
+- **Death because RNG failed you at worst moment**
 
 ---
 
 ### Risk vs Reward
 
-**High-Level Spell at Low Skill:**
+**High-Failure Spell in Combat:**
 
 **Potential Upside:**
-- If it succeeds: Massive damage/effect (Fireball at skill 30 still does 50 damage)
-- Can punch above your weight class
-- Clutch moments
+- If it succeeds: Massive damage (Apocalypse 200 damage)
+- Can end fight immediately
+- Infinite casts (no resource depletion)
 
 **Potential Downside:**
-- Wasted MP (now can't cast more spells)
-- Wasted time (enemy gets advantage)
-- Potential death (if it was your survival spell)
+- Wasted time on failure (3-4 sec master spell cast)
+- Vulnerability during long cast
+- May fail multiple times in a row (probability)
+- Enemy gets free damage
 
 **Strategic Consideration:**
-- Use risky spells when you can afford failure (low-stakes combat)
-- Use safe spells in life-or-death (boss fights, low HP)
-- Mix risky offense with safe defense
+- Use high-reliability spells in life-or-death (mastered spells, low failure)
+- Save risky ultimate spells for when you can afford failure
+- Always have backup low-failure spell for emergencies
 
 ---
 
@@ -106,23 +148,24 @@ Failure Chance = max(0, (Required Skill - Your Skill) × 2)%
 
 **Exploration / Out of Combat:**
 - Failure is inconvenience, not death
-- Safe to experiment with risky spells
-- Wasted MP regenerates
+- Safe to use complex spells
+- Can retry without pressure
 
 **Regular Combat:**
-- Moderate risk
-- Failure may extend fight
-- Can recover from mistakes
+- Moderate stakes
+- Failure extends fight (more enemy damage)
+- Mix reliable and risky spells
 
 **Boss Fight / High Stakes:**
 - Failure can be fatal
-- Use spells within your skill range
+- Use mastered spells (6-10% failure max)
 - Reliability > power
+- One failed heal can mean death
 
-**Emergency Healing:**
-- Failure = death
-- NEVER use risky heals at low HP
-- Always have safe backup heal
+**Holding Expensive Spells:**
+- High risk: If poise breaks, lose spell until rest
+- Don't hold 7-memory spells in dangerous situations
+- Quick-cast to minimize holding time
 
 ---
 
@@ -174,67 +217,77 @@ Failure Chance = max(0, (Required Skill - Your Skill) × 2)%
 
 ---
 
-### Concentration Spells
+### Concentration Spells (Channeling)
 
 **Mechanic:**
 - Hold button to maintain continuous effect
-- Costs MP per second (not flat cost)
-- Can move slowly while channeling (50% speed)
-- Channel broken by: releasing button, running out of MP, sprinting, taking stagger damage
+- **No ongoing cost** - spell is prepared, channeling is free
+- **Failure check on initial cast only** (not during channel)
+- Can move slowly while channeling (65% speed)
+- Channel broken by: releasing button, poise break, sprinting, stagger
 
 **Concentration Spell Examples:**
 
-| Spell | Effect | MP Cost per Second |
-|-------|--------|--------------------|
-| **Flames** | 8 fire damage/sec | 20 MP/sec |
-| **Frostbite** | 6 frost damage/sec + slow | 18 MP/sec |
-| **Sparks** | 10 shock damage/sec + drain MP | 15 MP/sec |
-| **Healing** | 10 HP/sec | 15 MP/sec |
-| **Lesser Ward** | Block 40 damage/spells | 10 MP/sec |
-| **Greater Ward** | Block 80 damage/spells | 25 MP/sec |
+| Spell | Memory Cost | Effect | Failure Check |
+|-------|-------------|--------|---------------|
+| **Flames** | 2 memory | 8 fire damage/sec | Once on start |
+| **Frostbite** | 2 memory | 6 frost damage/sec + slow | Once on start |
+| **Sparks** | 2 memory | 10 shock damage/sec | Once on start |
+| **Healing Hands** | 3 memory | 10 HP/sec | Once on start |
+| **Lesser Ward** | 3 memory | Block 40 damage/spells | Once on start |
+| **Greater Ward** | 5 memory | Block 80 damage/spells | Once on start |
+
+**Critical Mechanic: Poise Break While Channeling**
+- If your poise breaks during channeling → spell is "forgotten"
+- Forgotten spell → memory capacity reduced until rest
+- Example: Channeling Flames (2 memory), poise breaks → lose 2 memory until rest
+- **This is the primary risk of channeling** - poise vulnerability
 
 ---
 
 ### Concentration vs Instant Spells
 
 **Concentration Advantages:**
-- Better MP efficiency (more damage/healing per MP)
-- Continuous damage (no gaps)
-- Can stop early (save MP if enemy dies)
-- Lower burst cost
+- Infinite duration (no resource drain)
+- Continuous damage (no gaps between casts)
+- Can stop early (adaptable)
+- Single failure check (if it starts, it works)
 
 **Concentration Disadvantages:**
 - Locked in animation (vulnerable)
-- Interrupted by stagger
-- Can't do other actions
-- Slow movement
+- **HIGH RISK: Poise break = lose spell until rest**
+- Can't do other actions while channeling
+- Slow movement (65% speed)
+- Low-poise builds (robes) very risky
 
 **Instant Advantages:**
-- Cast and move (no lock-in)
+- Cast and move immediately (no lock-in)
 - Burst damage (kill before retaliation)
 - Can combo with weapons
-- Flexibility
+- Lower poise break risk (shorter holding time)
 
 **Instant Disadvantages:**
-- Higher MP cost per damage
-- Fixed cost (no early stop)
-- Cooldown/cast time
+- Failure check on every cast
+- Gaps between casts (cast time delay)
+- Less sustained DPS
 
 ---
 
 ### When to Use Each Type
 
 **Use Concentration Spells:**
-- Weak enemies (won't stagger you)
+- High poise builds (heavy armor) - can tank hits while channeling
 - Safe distance (not getting hit)
-- MP efficiency important (long fight)
-- Healing after combat
+- Weak enemies (won't break your poise)
+- Sustained damage situations
+- When you have summons tanking for you
 
 **Use Instant Spells:**
-- Dangerous enemies (might stagger you)
-- Need burst damage
-- Want mobility
-- Combo with melee
+- Low poise builds (robes) - minimize holding time
+- Dangerous enemies (high damage, poise break risk)
+- Need burst damage to kill quickly
+- Want mobility between casts
+- Combo with melee weapons
 
 ---
 
@@ -272,24 +325,28 @@ Dual Cast MP Cost = Single Cast Cost × 2
 ### Dual Casting Examples
 
 **Flames (Concentration):**
-- Single: 8 damage/sec, 20 MP/sec
-- Dual: 20 damage/sec, 40 MP/sec
-- Efficiency: Worse (2.5× damage for 2× cost, but staggers)
+- Single: 8 damage/sec, 2 memory
+- Dual: 20 damage/sec, 2 memory (same spell equipped twice)
+- Efficiency: Much better DPS for same memory cost
+- Risk: Poise break loses 2 memory instead of 2 (same risk)
 
 **Firebolt (Instant):**
-- Single: 40 damage, 50 MP
-- Dual: 100 damage, 100 MP
-- Efficiency: Better (2.5× damage for 2× cost = +25% efficiency)
+- Single: 40 damage, 3 memory
+- Dual: 100 damage, 3 memory (same spell)
+- Efficiency: 2.5× damage for same memory investment
+- Risk: Single failure check - if fails, no effect but can try again
 
-**Healing (Concentration):**
-- Single: 10 HP/sec, 15 MP/sec
-- Dual: 25 HP/sec, 30 MP/sec
-- Efficiency: Better (+25% healing efficiency)
+**Healing Hands (Concentration):**
+- Single: 10 HP/sec, 3 memory
+- Dual: 25 HP/sec, 3 memory
+- Efficiency: Much better healing for same memory
+- Risk: Poise break during dual channel still loses only 3 memory
 
 **Close Wounds (Instant):**
-- Single: 100 HP, 100 MP
-- Dual: 250 HP, 200 MP
-- Efficiency: Better (+25% healing efficiency)
+- Single: 100 HP, 4 memory
+- Dual: 250 HP, 4 memory
+- Efficiency: 2.5× healing for same memory investment
+- Risk: Higher failure chance on more valuable heal
 
 ---
 
@@ -471,15 +528,15 @@ Ultimate spells should feel impactful, not spammable.
 
 ### Master Spell Cooldowns
 
-| Spell | MP Cost | Cooldown | Effect |
-|-------|---------|----------|--------|
-| **Apocalypse** (Evocation) | 250 MP | 10 sec | 200 damage in 15m radius |
-| **Fire Storm** (Evocation) | 300 MP | 10 sec | 150 damage in 20m radius |
-| **Lightning Storm** (Evocation) | 40 MP/sec | 8 sec | 100 damage/sec beam |
-| **Mayhem** (Illusion) | 250 MP | 10 sec | Frenzy all in 75m |
-| **Harmony** (Illusion) | 250 MP | 10 sec | Calm all in 75m |
-| **Guardian Circle** (Divine Arts) | 250 MP | 15 sec | Healing zone 20 HP/sec |
-| **Mass Paralysis** (Abjuration) | 250 MP | 12 sec | Paralyze all in 5m |
+| Spell | Memory Cost | Cooldown | Base Failure | Effect |
+|-------|-------------|----------|--------------|--------|
+| **Apocalypse** (Evocation) | 7 memory | 10 sec | 40% | 200 damage in 15m radius |
+| **Fire Storm** (Evocation) | 7 memory | 10 sec | 40% | 150 damage in 20m radius |
+| **Lightning Storm** (Evocation) | 7 memory | 8 sec | 40% | 100 damage/sec beam (channeled) |
+| **Mayhem** (Illusion) | 7 memory | 10 sec | 40% | Frenzy all in 75m |
+| **Harmony** (Illusion) | 7 memory | 10 sec | 40% | Calm all in 75m |
+| **Guardian Circle** (Divine Arts) | 7 memory | 15 sec | 40% | Healing zone 20 HP/sec |
+| **Mass Paralysis** (Abjuration) | 7 memory | 12 sec | 40% | Paralyze all in 5m |
 
 ---
 
@@ -495,6 +552,197 @@ Ultimate spells should feel impactful, not spammable.
 - Don't save ultimates forever ("cooldown is wasted time")
 - Use early and often (cooldown starts recovering)
 - Final boss: Use immediately when cooldown ready
+
+---
+
+## Memory Loss from Poise Break
+
+### Critical Mechanic
+
+**Poise breaks are CATASTROPHIC in the memory system.**
+
+When your poise breaks while:
+- **Holding a spell** (charged but not released)
+- **Channeling a concentration spell** (actively channeling)
+
+You LOSE that spell until rest/sleep.
+
+---
+
+### Memory Loss Mechanics
+
+**What Happens:**
+1. Your poise reaches 0 from cumulative damage
+2. You stagger (animation plays)
+3. The spell you were holding/channeling is "forgotten"
+4. That spell's memory cost is **subtracted from your total capacity**
+5. You cannot prepare new spells to fill that gap until rest
+
+**Example:**
+```
+Total Memory: 50
+Prepared Spells: 45/50 memory used
+Holding Apocalypse (7 memory)
+Poise breaks from enemy power attack
+
+Result:
+- Apocalypse forgotten
+- Total Memory: 50 → 43 (lost 7 capacity)
+- Prepared Spells: 38/43 (other spells remain)
+- Cannot prepare anything to fill the 7-memory gap
+- Must rest/sleep or use clarity potion to recover
+```
+
+---
+
+### Strategic Implications
+
+**High-Memory Spells are HIGH RISK:**
+- Holding 7-memory spell = risk losing 7 capacity
+- Holding 2-memory spell = only risk losing 2 capacity
+- **Don't hold expensive spells in dangerous situations**
+
+**Armor Type Matters:**
+| Armor | Poise | Risk Level | Strategy |
+|-------|-------|------------|----------|
+| **Heavy** | Very High | Low | Can safely hold/channel expensive spells |
+| **Light** | Medium | Medium | Moderate risk, play smart |
+| **Robes** | Very Low | Very High | NEVER hold expensive spells in combat |
+
+**Channeling Risk:**
+- Concentration spells can be channeled infinitely
+- BUT every second channeling = exposure to poise break
+- Long channels = high risk
+- Heavy armor makes channeling viable
+- Robes make channeling suicidal unless safe
+
+**Quick-Casting Strategy:**
+- Charge spell → release immediately (minimize hold time)
+- Reduces window for poise break
+- Safer for low-poise builds
+- Sacrifice positioning time for safety
+
+---
+
+### Recovery Options
+
+**Rest/Sleep (Full Recovery):**
+- Restores ALL forgotten spells
+- Requires safe location (bed, camp, inn)
+- Takes time (hours in-game)
+- Best long-term solution
+
+**Clarity Potions (Partial Recovery):**
+- **Minor Clarity (50g):** Recover 1 forgotten spell (lowest memory cost first)
+- **Clarity Potion (150g):** Recover 2 forgotten spells
+- **Greater Clarity (400g):** Recover 3 forgotten spells
+- **Grand Clarity (1000g):** Recover ALL forgotten spells
+- Expensive mid-dungeon insurance
+- Use for critical spells only
+
+**Prevention Better Than Cure:**
+- Don't hold expensive spells unnecessarily
+- Use wards to protect poise while casting
+- Position safely (range, cover, summons)
+- Heavy armor if you plan to tank while casting
+
+---
+
+## Reload Spell & Loadout Management
+
+### Core Mechanic
+
+**Reload** is a special spell that lets you swap your prepared spells mid-combat/adventure.
+
+**Spell Properties:**
+- **Memory Cost:** 1 memory
+- **Cast Time:** 2.0 seconds
+- **Effect:** Opens grimoire menu (time slows 50%)
+- **Cooldown:** None (but penalties apply)
+
+---
+
+### Reload Penalties
+
+**First Cast:**
+- **Guaranteed Success (0% failure)**
+- Opens grimoire, swap any prepared spell
+- No penalties
+- "Get one free swap per combat"
+
+**Second Cast:**
+- **25% Failure Chance** (exponential increase)
+- Reload debuff applied: +10% failure to ALL other spells (linear)
+- Debuff duration: 60 seconds
+
+**Third Cast:**
+- **60% Failure Chance**
+- Reload debuff stacks: +20% failure to all spells
+- Getting dangerous
+
+**Fourth+ Cast:**
+- **90% Failure Chance**
+- Reload debuff stacks: +30% failure to all spells
+- Extremely risky, almost guaranteed failure
+
+**Debuff Recovery:**
+- Debuff ticks down over time
+- Every 5-10 seconds: +10% spell effectiveness restored
+- Example: 50% effectiveness → 60% → 70% → 80% → 90% → 100%
+- Takes ~60 seconds to fully clear debuff
+- Debuff does NOT affect memory, only failure rates
+
+---
+
+### Reload Tactical Uses
+
+**Situational Adaptation:**
+```
+Dungeon: Prepare fire spells (undead enemies)
+Boss Room: Use Reload, swap to frost spells (fire-resistant boss)
+Cost: 1 free reload, then risk if need more swaps
+```
+
+**Build Flexibility:**
+```
+Battle Mage with 20 memory:
+Core Loadout: Fireball (5) + Fast Healing (4) + Reload (1) + Ward (3) + utility (7)
+
+Situation 1 (Fire Weakness): Keep Fireball
+Situation 2 (Fire Resistance): Reload → swap Fireball for Ice Storm (5)
+Situation 3 (Need Utility): Reload → swap damage for Invisibility
+```
+
+**Emergency Swaps:**
+```
+Boss fight going bad
+Need different damage type
+Use Reload (25% failure risk)
+If succeeds: New spell might save fight
+If fails: Wasted 2 sec, debuff to all spells
+```
+
+---
+
+### Reload Strategy
+
+**When to Prepare Reload:**
+- Hybrid builds (limited memory, need flexibility)
+- Solo adventurers (unpredictable situations)
+- Exploration (swap utility as needed)
+- Not for pure mages (large memory pool, prepare everything)
+
+**When to Use Reload:**
+- First free cast: Situational swaps (enemy resistances)
+- Emergency only: Never spam Reload (debuff too punishing)
+- Out of combat: Safe to swap without time pressure
+- In combat: High risk (failure chance + debuff to other spells)
+
+**When NOT to Use Reload:**
+- Don't spam it (exponential failure + debuff)
+- Don't use if you already have good spell coverage
+- Don't rely on it as primary strategy (backup only)
+- Pure mages: Prepare larger loadout instead
 
 ---
 
@@ -631,12 +879,14 @@ Ultimate spells should feel impactful, not spammable.
 
 ## Open Questions
 
-1. **Should dual casting have different failure rates?** (Higher risk for higher reward?)
-2. **Spell fizzle damage to caster?** (Failed spell backfires for minor damage?)
-3. **Concentration spell MP refund on failure?** (Current: yes, but should it be partial?)
-4. **Master spell cooldowns too long?** (Balance vs feeling of ultimate power)
-5. **Environmental spell interactions?** (How deep should combo system go?)
-6. **Spell interruption poise thresholds?** (Exact damage values to interrupt)
+1. **Should dual casting have different failure rates?** (Higher risk for higher reward? Or keep same single-roll mechanic?)
+2. **Spell fizzle damage to caster?** (Failed spell backfires for minor damage? Or just time penalty?)
+3. **Memory loss priority:** If multiple spells held/channeled when poise breaks, which is lost? Most recent? Highest cost?
+4. **Reload debuff duration:** 60 seconds too long? Should it clear faster in combat vs out of combat?
+5. **Master spell cooldowns too long?** (10-15 sec prevents spam but might feel restrictive with failure chance on top)
+6. **Environmental spell interactions?** (How deep should combo system go? Should mastery affect combos?)
+7. **Spell interruption poise thresholds?** (Exact damage values to break poise for each armor type?)
+8. **Clarity potion recovery order:** Lowest memory cost first, or player choice, or most recently lost?
 
 ---
 

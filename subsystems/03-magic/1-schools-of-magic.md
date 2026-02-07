@@ -4,6 +4,8 @@
 **Dependencies:** [0. Magic Core](0-magic-core.md), [Combat Systems](../combat/combat-systems.md)
 **Status:** Design Phase
 
+**NOTE:** This document contains legacy MP cost references. The magic system now uses **memory-based** casting (see [0. Magic Core](0-magic-core.md)). Spells cost 1-7 memory to prepare based on complexity. All "MP Cost" references below should be considered **memory cost** instead. Specific memory costs for each spell will be finalized during balance pass.
+
 ---
 
 ## The Six Schools of Magic

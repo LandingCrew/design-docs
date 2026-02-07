@@ -32,11 +32,6 @@
 Final Damage = (Base Weapon Damage × Skill Multiplier × Material Bonus) + Perks + Enchantments - Enemy Armor
 ```
 
-**NOT Skyrim's formula:**
-```
-❌ Damage = Base Weapon Damage + Upgrades (broken, makes gear > skill)
-```
-
 ---
 
 ### Skill Multiplier (THE MOST IMPORTANT FACTOR)
