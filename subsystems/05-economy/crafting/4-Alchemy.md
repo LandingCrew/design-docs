@@ -1,5 +1,7 @@
 ## Alchemy - Potions & Poisons
 
+> See [Ingredients & Materials](ingredients/0-index.md) for full ingredient database
+
 ### Discovery System
 
 **Philosophy:** Learn through experimentation, not wiki lookup
@@ -25,24 +27,24 @@
    - Pay for knowledge (50g per ingredient)
    - Reveals all properties
    - Faster than books, less than experimenting
-   - not all Alchemists no every ingredient
+   - not all Alchemists know every ingredient
 
 **Each ingredient has 4 hidden properties**
 
 ---
 
-### Ingredient Example: Blue Valley Flower
+### Ingredient Example: Silverbloom
 
 **Hidden Properties:**
-1. Restore magic
+1. Restore Magicka
 2. Fortify Health
 3. Resist Shock
 4. Fortify Conjuration
 
 **Discovery Progress:**
-- Eat raw → Learn property 1 (Restore magic)
-- Combine with Wheat (Restore Health) → No match, wasted, learn 1 more property
-- Combine with Lavender (Fortify Health) → **MATCH!** Create potion, learn property 2
+- Eat raw → Learn property 1 (Restore Magicka)
+- Combine with Heathergrass (Fortify Health) → **MATCH!** Create potion, learn property 2
+- Combine with Thornroot (Restore Stamina) → No match, wasted, learn 1 more property
 
 **Over time, you build a mental encyclopedia**
 
@@ -54,7 +56,7 @@
 Magnitude = Base Effect × (Alchemy Skill / 50) × Ingredient Quality
 ```
 
-**Example: Healing Potion (Blue Mountain Flower + Wheat)**
+**Example: Healing Potion (Goldvein Leaf + Heathergrass)**
 
 | Alchemy Skill | HP Restored | Duration (if applicable) |
 |--------------|-------------|--------------------------|
@@ -73,16 +75,16 @@ Magnitude = Base Effect × (Alchemy Skill / 50) × Ingredient Quality
 **Combine 3+ ingredients with overlapping properties:**
 
 **Example:**
-- Blue valley Flower (Restore magic, Fortify Health)
-- Wheat (Restore Health, Fortify Health)
-- Red Mountain Flower (Restore magic, Fortify magic)
+- Silverbloom (Restore Magicka, Fortify Health)
+- Heathergrass (Fortify Health, Restore Stamina)
+- Dewmint (Restore Magicka, Resist Frost)
 
 **Result: Potion with 3 effects:**
-1. Restore Health (from Wheat)
-2. Restore magic (from both flowers)
-3. Fortify Health (from BMF + Wheat)
+1. Restore Stamina (from Heathergrass)
+2. Restore Magicka (from Silverbloom + Dewmint)
+3. Fortify Health (from Silverbloom + Heathergrass)
 
-**Philosophy:** Experimentation creates powerful custom potions**
+**Philosophy:** Experimentation creates powerful custom potions
 
 ---
 
@@ -93,11 +95,11 @@ Magnitude = Base Effect × (Alchemy Skill / 50) × Ingredient Quality
 - **Regenerate Health:** 5-15 HP/sec for 30-60 sec
 - **Restore Stamina:** 30-100 SP instant
 - **Regenerate Stamina:** 10-30 SP/sec
-- **Restore magic:** 30-100 MP instant
-- **Regenerate magic:** 10-30 MP/sec
+- **Restore Magicka:** 30-100 MP instant
+- **Regenerate Magicka:** 10-30 MP/sec
 
 #### Buff Potions (Duration: 30-300 sec)
-- **Fortify Health/Stamina/magic:** +50-150
+- **Fortify Health/Stamina/Magicka:** +50-150
 - **Fortify Skill:** +10-30 to specific skill
 - **Resist Element:** -30-60% damage
 - **Fortify Damage:** +15-40% physical damage
@@ -106,7 +108,7 @@ Magnitude = Base Effect × (Alchemy Skill / 50) × Ingredient Quality
 #### Utility Potions
 - **Waterbreathing:** 60-600 seconds
 - **Night Eye:** See in dark (60 sec)
-- predator vision: see heat signatures
+- Predator Vision: see heat signatures
 - **Detect Life:** See enemies through walls
 
 ---
@@ -117,12 +119,12 @@ Magnitude = Base Effect × (Alchemy Skill / 50) × Ingredient Quality
 
 | Poison Type | Effect | Ingredients |
 |------------|--------|-------------|
-| **Damage Health** | 20-60 poison damage over 10 sec | Deathbell, Nightshade |
-| **Paralyze** | Stun 2-5 seconds | Canis Root, Imp Stool |
-| **Drain Stamina** | -50-100 SP | Thistle, Wheat |
-| **Weakness to Magic** | +30% magic damage taken | Abecean Longfin |
-| **Fear** | Target flees 10-20 sec | Gleamblossom |
-| **Slow** | -30% movement | Frost Salts |
+| **Damage Health** | 20-60 poison damage over 10 sec | Deathcap, Duskshade |
+| **Paralyze** | Stun 2-5 seconds | Thornroot, Cavemoss |
+| **Drain Stamina** | -50-100 SP | Bloodnettle, Heathergrass |
+| **Weakness to Magic** | +30% magic damage taken | Abyssal Lotus |
+| **Fear** | Target flees 10-20 sec | Wraithbloom |
+| **Slow** | -30% movement | Hoarfrost Essence |
 
 **Tactical use:**
 - Assassin: Paralyze poison → backstab
@@ -134,24 +136,44 @@ Magnitude = Base Effect × (Alchemy Skill / 50) × Ingredient Quality
 ### Ingredient Rarity
 
 **Common (easy to find):**
-- Wheat, Blue Mountain Flower, Lavender
+- Heathergrass, Goldvein Leaf, Silverbloom, Thornroot
 - Low-value potions
 - Everywhere
 
 **Uncommon (specific biomes):**
-- Nightshade (swamps), Thistle (mountains)
+- Duskshade (swamps), Frostfern (mountains), Stormbloom (ridgelines)
 - Medium-value potions
 - Regional
 
 **Rare (dangerous areas, loot):**
-- Deathbell (dungeons), Frost Salts (ice wraiths)
+- Deathcap (dungeons), Hoarfrost Essence (ice creatures)
 - Strong potions
 - Risk to obtain
 
 **Very Rare (boss drops, high-level areas):**
-- Dragon parts, Daedra hearts, Vampire dust
+- Dragon parts, Voidmetal Cores, Phoenix Ash Flower
 - Legendary potions
 - End-game content
 
 ---
 
+### Alchemy Modifier Integration
+
+Alchemy has **two discovery layers** that work together:
+
+1. **Ingredient Discovery** (existing system above) = determines WHAT you can brew
+2. **Modifier Discovery** (new system) = determines HOW you refine what you brew
+
+Modifier discovery adds refinement techniques that improve your potions beyond raw skill:
+- **Potency modifiers**: Increase magnitude beyond base formula
+- **Duration modifiers**: Extend buff/effect duration
+- **Purity modifiers**: Reduce or eliminate negative side effects
+- **Concentration modifiers**: Combine effects more efficiently
+
+**See:** [Crafting Progression - Alchemy Modifier Tree](2-crafting-progression.md#alchemy---potion--poison-refinement-modifiers) for the full alchemy modifier tree, synergy chains, and application rules.
+
+**Key Distinction:**
+- Ingredient discovery = "I can make healing potions now"
+- Modifier discovery = "My healing potions are now 25% stronger with no nausea side effect"
+
+---

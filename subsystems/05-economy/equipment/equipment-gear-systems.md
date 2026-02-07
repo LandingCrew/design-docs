@@ -2,7 +2,7 @@
 
 **Subsystem:** Weapons, Armor, Enchantments, Durability
 **Owner:** Gameplay Team
-**Dependencies:** [Combat Systems](../combat/combat-systems.md), [Progression Systems](../progression/progression-systems.md), [Crafting Systems](../crafting/crafting-systems.md)
+**Dependencies:** [Combat Systems](../combat/combat-systems.md), [Progression Systems](../progression/progression-systems.md), [Crafting Systems](../crafting/1-crafting-systems.md)
 **Status:** Design Phase
 
 ---
@@ -610,4 +610,4 @@ Damage Reduction % = min(80%, Armor Rating / (Armor Rating + 100))
 
 **Document Status:** Draft v1.0
 **Last Updated:** 2026-01-24
-**Dependencies:** [Combat Systems](../combat/combat-systems.md), [Crafting Systems](../crafting/crafting-systems.md), [Progression Systems](../progression/progression-systems.md)
+**Dependencies:** [Combat Systems](../combat/combat-systems.md), [Crafting Systems](../crafting/1-crafting-systems.md), [Progression Systems](../progression/progression-systems.md)

@@ -1,0 +1,11 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(find:*)",
+      "Bash(gh repo view:*)",
+      "WebFetch(domain:github.com)",
+      "Bash(dir:*)",
+      "WebFetch(domain:dtdnd.neocities.org)"
+    ]
+  }
+}

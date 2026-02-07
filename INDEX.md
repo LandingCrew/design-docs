@@ -112,7 +112,7 @@ This design portfolio breaks down the complete game design document into modular
 
 ---
 
-**[Crafting Systems](subsystems/crafting/crafting-systems.md)**
+**[Crafting Systems](subsystems/05-economy/crafting/1-crafting-systems.md)**
 - Smithing (skill-based quality: Shoddy to Masterwork)
 - Alchemy (discovery system, ingredient properties)
 - Enchanting (disenchant to learn, soul gems)
